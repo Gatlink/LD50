@@ -6,6 +6,7 @@ signal screen_exited(chunk)
 
 
 onready var end_position := $EndPosition
+onready var obstacle_holder := $Obstacles
 
 
 func _on_VisibilityNotifier_screen_exited() -> void:
