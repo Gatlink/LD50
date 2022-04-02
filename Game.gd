@@ -22,7 +22,7 @@ func _notification(what: int) -> void:
 
 func _ready() -> void:
 	randomize()
-	call_deferred("spawn_obstacles", 100)
+#	call_deferred("spawn_obstacles", 100)
 
 
 func spawn_obstacles(count : int) -> void:

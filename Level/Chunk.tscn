@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2, 0.2, 5 )
+
+[node name="Chunk" type="StaticBody"]
+
+[node name="Bottom" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Bottom"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="BottomLeft" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, -3.27524, 1.15795, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="BottomLeft"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="BottomRight" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, 3.275, 1.158, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="BottomRight"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="Left" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.629, 4.436, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Left"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="Right" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 4.62879, 4.43559, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Right"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="TopLeft" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, -3.27524, 7.69888, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="TopLeft"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="TopRight" type="CollisionShape" parent="."]
+transform = Transform( -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 3.275, 7.699, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="TopRight"]
+width = 4.0
+height = 0.4
+depth = 10.0
+
+[node name="Top" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.0485, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Top"]
+width = 4.0
+height = 0.4
+depth = 10.0

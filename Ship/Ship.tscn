@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 
@@ -8,7 +8,11 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 1, 0, 0, 1 )
 
-[node name="Ship" type="Spatial"]
+[sub_resource type="SphereShape" id=3]
+radius = 0.5
+
+[node name="Ship" type="KinematicBody"]
+collision_mask = 2
 script = ExtResource( 1 )
 acceleration = SubResource( 2 )
 
@@ -19,3 +23,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0201988, 0, -0.010561 )
 height = 1.0
 depth = 3.0
 material = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
