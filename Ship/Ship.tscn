@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
+[ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SphereShape" id=3]
 radius = 0.5
@@ -18,11 +16,8 @@ acceleration = SubResource( 2 )
 
 [node name="Graph" type="Spatial" parent="."]
 
-[node name="CSGBox" type="CSGBox" parent="Graph"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0201988, 0, -0.010561 )
-height = 1.0
-depth = 3.0
-material = SubResource( 1 )
+[node name="LD50-Ship-01" parent="Graph" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )

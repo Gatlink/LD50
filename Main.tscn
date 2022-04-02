@@ -15,6 +15,67 @@ _data = {
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
 
+[node name="Chunks" type="Spatial" parent="."]
+
+[node name="Chunk" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="Chunk2" parent="Chunks" instance=ExtResource( 5 )]
+
+[node name="Chunk3" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Chunk4" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
+
+[node name="Chunk5" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30 )
+
+[node name="Chunk6" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
+
+[node name="Chunk7" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+
+[node name="Chunk8" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60 )
+
+[node name="Chunk9" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70 )
+
+[node name="Chunk10" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80 )
+
+[node name="Chunk11" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -89.8025 )
+
+[node name="Chunk12" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -99.8025 )
+
+[node name="Chunk13" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -109.803 )
+
+[node name="Chunk14" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -119.803 )
+
+[node name="Chunk15" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -129.803 )
+
+[node name="Chunk16" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -139.803 )
+
+[node name="Chunk17" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -149.803 )
+
+[node name="Chunk18" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -159.803 )
+
+[node name="Chunk19" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -169.803 )
+
+[node name="Chunk20" parent="Chunks" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -179.803 )
+
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 
 [node name="Path" type="Path" parent="Ship"]
@@ -36,15 +97,6 @@ look_at_path = NodePath("../../../LookAt")
 
 [node name="LookAt" type="Position3D" parent="Ship"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.08113 )
-
-[node name="Chunk" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75615 )
-
-[node name="Chunk2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.6889 )
-
-[node name="Chunk3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.5064 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 3.46905, 7.49703 )
