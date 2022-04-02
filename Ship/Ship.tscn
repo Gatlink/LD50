@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
@@ -8,6 +8,50 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.6, 0.1, 0.35 )
+
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.5
+height = 2.0
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.57764, 1 )
+colors = PoolColorArray( 0.797588, 0.875, 0.112793, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.492045 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+lifetime_randomness = 0.2
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.2
+scale_random = 0.4
+scale_curve = SubResource( 10 )
+color = Color( 0.968627, 1, 0, 1 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=13]
+params_blend_mode = 1
+albedo_color = Color( 0.929412, 1, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0.87451, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=12]
+material = SubResource( 13 )
 
 [node name="Ship" type="Spatial"]
 script = ExtResource( 1 )
@@ -26,3 +70,32 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 enabled = true
 cast_to = Vector3( 0, -5, 0 )
 collision_mask = 2
+
+[node name="HitBox" type="Area" parent="."]
+collision_layer = 0
+input_ray_pickable = false
+monitorable = false
+
+[node name="LeftWing" type="CollisionShape" parent="HitBox"]
+transform = Transform( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -1, 1.19184, 0 )
+shape = SubResource( 4 )
+
+[node name="RightWing" type="CollisionShape" parent="HitBox"]
+transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 1, 1.192, 0 )
+shape = SubResource( 4 )
+
+[node name="Cockpit" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.418648 )
+shape = SubResource( 5 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56373, 0 )
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 11 )
+draw_pass_1 = SubResource( 12 )
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
