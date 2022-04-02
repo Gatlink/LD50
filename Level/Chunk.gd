@@ -1,5 +1,5 @@
 class_name Chunk
-extends StaticBody
+extends Spatial
 
 
 signal screen_exited(chunk)

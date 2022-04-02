@@ -2,12 +2,12 @@ class_name Ship
 extends Spatial
 
 
-export (float) var max_speed := 50.0
+export (float) var max_speed := 75.0
 export (float) var acceleration_time := 1.0
 export (float) var deceleration_time := 1.5
 export (Curve) var acceleration : Curve
 
-export (float) var max_angle := 15.0
+export (float) var max_angle := 25.0
 export (float) var steering_time := 0.5
 export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
