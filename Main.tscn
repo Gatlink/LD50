@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
-[ext_resource path="res://FollowShip.gd" type="Script" id=3]
 [ext_resource path="res://FollowSpeed.gd" type="Script" id=4]
 [ext_resource path="res://Level/Chunk.tscn" type="PackedScene" id=5]
 
@@ -78,25 +77,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -179.803 )
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 
-[node name="Path" type="Path" parent="Ship"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04924, 5.9069 )
-curve = SubResource( 1 )
-
-[node name="PathFollow" type="PathFollow" parent="Ship/Path"]
-transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 1.41981, 1.59013 )
-rotation_mode = 0
-loop = false
-script = ExtResource( 4 )
-ship_path = NodePath("../..")
-
-[node name="RemoteTransform" type="RemoteTransform" parent="Ship/Path/PathFollow"]
-remote_path = NodePath("../../../../Camera")
+[node name="RemoteTransform" type="RemoteTransform" parent="Ship"]
+transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 0, 0 )
+remote_path = NodePath("../../Path")
+update_rotation = false
 update_scale = false
-script = ExtResource( 3 )
-look_at_path = NodePath("../../../LookAt")
 
 [node name="LookAt" type="Position3D" parent="Ship"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.08113 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 3.46905, 7.49703 )
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 0, 0 )
+curve = SubResource( 1 )
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( 1, 0, 0, 0, 0.999999, -0.00150306, 0, 0.00150306, 0.999999, 0, 1.41981, 1.59013 )
+rotation_mode = 0
+loop = false
+script = ExtResource( 4 )
+ship_path = NodePath("../../Ship")
+
+[node name="Camera" type="Camera" parent="Path/PathFollow"]
+transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 2.21071, 6.0179 )

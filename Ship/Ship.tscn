@@ -6,18 +6,22 @@
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="SphereShape" id=3]
-radius = 0.5
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[node name="Ship" type="KinematicBody"]
-collision_mask = 2
+[node name="Ship" type="Spatial"]
 script = ExtResource( 1 )
 acceleration = SubResource( 2 )
+steering = SubResource( 3 )
 
 [node name="Graph" type="Spatial" parent="."]
 
 [node name="LD50-Ship-01" parent="Graph" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 3 )
+[node name="Rays" type="Spatial" parent="."]
+
+[node name="GroundRayMid" type="RayCast" parent="Rays"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+collision_mask = 2
