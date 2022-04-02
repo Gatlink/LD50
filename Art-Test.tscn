@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=1]
 [ext_resource path="res://Art/Pipes/LD50-Pipe-01.glb" type="PackedScene" id=2]
 [ext_resource path="res://Art/Obstacles/LD50-Obstacle-Wall-Half-01.glb" type="PackedScene" id=3]
 [ext_resource path="res://Art/Obstacles/LD50-Obstacle-Tower-Four-01.glb" type="PackedScene" id=4]
+[ext_resource path="res://Art/Bonus/LD50-Bonus-Builder-01.tscn" type="PackedScene" id=5]
 
 [node name="Spatial" type="Spatial"]
 
@@ -18,3 +19,6 @@ transform = Transform( 0.712602, -0.379315, 0.590186, -0.701569, -0.38528, 0.599
 transform = Transform( 0.947322, 0, 0, 0, 0.947322, 0, 0, 0, 0.947322, 0, 0, 0 )
 
 [node name="LD50-Obstacle-Tower-Four-01" parent="LD50-Obstacle-Wall-Half-01" instance=ExtResource( 4 )]
+
+[node name="LD50-Bonus-Builder-01" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42322, 6.7148 )
