@@ -62,3 +62,7 @@ func update_t(t : float, delta : float, duration: float) -> float:
 
 func get_updated_value(curve : Curve, min_value : float, max_value : float, t : float) -> float:
 	return min_value + curve.interpolate(t) * max_value
+
+
+func _on_HitBox_area_entered(_area: Area) -> void:
+	print("BOOM")

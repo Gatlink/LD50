@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
@@ -8,6 +8,13 @@ _data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.6, 0.1, 0.35 )
+
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.5
+height = 2.0
 
 [node name="Ship" type="Spatial"]
 script = ExtResource( 1 )
@@ -26,3 +33,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 enabled = true
 cast_to = Vector3( 0, -5, 0 )
 collision_mask = 2
+
+[node name="HitBox" type="Area" parent="."]
+collision_layer = 0
+input_ray_pickable = false
+monitorable = false
+
+[node name="LeftWing" type="CollisionShape" parent="HitBox"]
+transform = Transform( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -1, 1.19184, 0 )
+shape = SubResource( 4 )
+
+[node name="RightWing" type="CollisionShape" parent="HitBox"]
+transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 1, 1.192, 0 )
+shape = SubResource( 4 )
+
+[node name="Cockpit" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.418648 )
+shape = SubResource( 5 )
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
