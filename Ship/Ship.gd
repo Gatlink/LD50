@@ -77,4 +77,5 @@ func _on_HitBox_area_entered(_area: Area) -> void:
 	
 	yield(get_tree().create_timer(particles.lifetime + 0.5), "timeout")
 	
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
