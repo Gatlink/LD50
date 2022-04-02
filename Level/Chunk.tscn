@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Level/Chunk.gd" type="Script" id=1]
 [ext_resource path="res://Level/LD50-Pipe-01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Obstacle/ObstacleFourPillars.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Obstacle/ObstacleHalfWall.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_blend_mode = 1
@@ -9,6 +11,7 @@ albedo_color = Color( 1, 0, 0, 0.27451 )
 
 [node name="Chunk" type="Spatial"]
 script = ExtResource( 1 )
+obstacle_scenes = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="Obstacles" type="Spatial" parent="."]
 
