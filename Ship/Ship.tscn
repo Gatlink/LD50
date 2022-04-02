@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[node name="Ship" type="Spatial"]
+script = ExtResource( 1 )
+acceleration = SubResource( 2 )
+
+[node name="Graph" type="Spatial" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="Graph"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0201988, 0, -0.010561 )
+height = 1.0
+depth = 3.0
+material = SubResource( 1 )
