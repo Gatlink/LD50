@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Bezier",
 "language": "GDScript",
 "path": "res://Bezier.gd"
+}, {
+"base": "Spatial",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://Ship/Ship.gd"
 } ]
 _global_script_class_icons={
-"Bezier": ""
+"Bezier": "",
+"Ship": ""
 }
 
 [application]
