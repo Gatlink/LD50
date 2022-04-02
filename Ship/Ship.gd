@@ -26,8 +26,13 @@ var t_speed : float
 var steer : float
 var t_steer : float
 
+var is_dead := false
+
 
 func _process(delta: float) -> void:
+	if is_dead:
+		return
+	
 	var is_accelerating := Input.is_action_pressed("accelerate")
 	t_speed = update_t(t_speed, delta, acceleration_time if is_accelerating else -deceleration_time)
 	speed = get_updated_value(acceleration, 0.0, -max_speed, t_speed)
@@ -65,4 +70,11 @@ func get_updated_value(curve : Curve, min_value : float, max_value : float, t : 
 
 
 func _on_HitBox_area_entered(_area: Area) -> void:
-	print("BOOM")
+	is_dead = true
+	$Graph.visible = false
+	var particles : Particles = $Particles
+	particles.emitting = true
+	
+	yield(get_tree().create_timer(particles.lifetime + 0.5), "timeout")
+	
+	get_tree().reload_current_scene()
