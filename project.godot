@@ -60,6 +60,11 @@ steer_right={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Ship"
+3d_physics/layer_2="Level"
+
 [physics]
 
 common/enable_pause_aware_picking=true

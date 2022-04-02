@@ -21,27 +21,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 
 [node name="Rays" type="Spatial" parent="."]
 
-[node name="GroundRay" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0 )
-enabled = true
-collision_mask = 2
-
-[node name="GroundRay2" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 0 )
-enabled = true
-collision_mask = 2
-
-[node name="GroundRay3" type="RayCast" parent="Rays"]
+[node name="GroundRayMid" type="RayCast" parent="Rays"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-enabled = true
-collision_mask = 2
-
-[node name="GroundRay4" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
-enabled = true
-collision_mask = 2
-
-[node name="GroundRay5" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0 )
 enabled = true
 collision_mask = 2

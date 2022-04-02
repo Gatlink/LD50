@@ -2,18 +2,20 @@ class_name Ship
 extends Spatial
 
 
-export (float) var max_speed := 20.0
+export (float) var max_speed := 10.0
 export (float) var acceleration_time := 1.0
 export (float) var deceleration_time := 1.5
 export (Curve) var acceleration : Curve
 
-export (float) var max_angle := 15.0
-export (float) var steering_time := 1
-export (float) var steer_back_time := 1
+export (float) var max_angle := 20.0
+export (float) var steering_time := 0.5
+export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
 
+export (float) var normal_smooth := 0.1
 
-onready var ground_cast : RayCast = $Rays/GroundRay3
+
+onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 
@@ -30,28 +32,28 @@ func _process(delta: float) -> void:
 	t_speed = update_t(t_speed, delta, acceleration_time if is_accelerating else -deceleration_time)
 	speed = get_updated_value(acceleration, 0.0, -max_speed, t_speed)
 	
+	var current_steer_dir := sign(steer) if steer != 0 else 0.0
 	var steer_dir := Input.get_action_strength("steer_left") - Input.get_action_strength("steer_right")
-	var current_steer_dir := sign(rotation.y) if rotation.y != 0 else 0.0
-	var is_steering := current_steer_dir == 0 or current_steer_dir == steer_dir
+	var is_steering := steer_dir != 0 and (steer_dir == current_steer_dir or current_steer_dir == 0)
 	t_steer = update_t(t_steer, delta, steering_time if is_steering else -steer_back_time)
-	steer = get_updated_value(steering, 0.0, max_angle * (steer_dir if is_steering else current_steer_dir), t_steer)
-	steer = deg2rad(steer)
+	steer = get_updated_value(steering, 0.0, deg2rad(max_angle) * (steer_dir if is_steering else current_steer_dir), t_steer)
 	
+	var forward := Vector3.BACK.rotated(ground_normal, steer)
 	global_transform.basis = Basis(
-		ground_normal.rotated(Vector3.FORWARD, deg2rad(90)),
+		ground_normal.rotated(forward, deg2rad(-90)),
 		ground_normal,
-		Vector3.BACK
+		forward
 	)
 	
-	var velocity := transform.basis.z * speed * delta
-	velocity += transform.basis.x * steer_dir * -max_speed * 0.01
+	var velocity := forward * speed * delta
 	global_transform.origin = ground_position + velocity
 
 
-func _physics_process(delta: float) -> void:
-	if ground_cast.is_colliding():
-		ground_position = ground_cast.get_collision_point()
-		ground_normal = ground_cast.get_collision_normal()
+func _physics_process(_delta: float) -> void:
+	if ground_ray.is_colliding():
+		ground_position = ground_ray.get_collision_point()
+		ground_normal = ground_ray.get_collision_normal() * normal_smooth + (1 - normal_smooth) * ground_normal
+		ground_normal = ground_normal.normalized()
 
 
 func update_t(t : float, delta : float, duration: float) -> float:
