@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
-[ext_resource path="res://Menu/ButtonTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Menu/MenuTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Art/Menus/Menu_BG-Video-02.webm" type="VideoStream" id=4]
+[ext_resource path="res://tilemap.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 307, 35, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 324, 69, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 511, 69, 13, 14 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -53,6 +66,100 @@ text = "Quit"
 
 [node name="FadeTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_bottom = -50.0
+alignment = 2
+
+[node name="Accelerate" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 466.0
+margin_right = 295.0
+margin_bottom = 506.0
+alignment = 2
+
+[node name="W" type="TextureRect" parent="VBoxContainer/Accelerate"]
+margin_right = 30.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 1 )
+stretch_mode = 6
+
+[node name="Slash2" type="Label" parent="VBoxContainer/Accelerate"]
+margin_left = 34.0
+margin_right = 44.0
+margin_bottom = 40.0
+theme = ExtResource( 3 )
+text = "/"
+
+[node name="Z" type="TextureRect" parent="VBoxContainer/Accelerate"]
+margin_left = 48.0
+margin_right = 78.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 2 )
+stretch_mode = 6
+
+[node name="Slash" type="Label" parent="VBoxContainer/Accelerate"]
+margin_left = 82.0
+margin_right = 92.0
+margin_bottom = 40.0
+theme = ExtResource( 3 )
+text = "/"
+
+[node name="Up" type="TextureRect" parent="VBoxContainer/Accelerate"]
+margin_left = 96.0
+margin_right = 126.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 3 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/Accelerate"]
+margin_left = 130.0
+margin_right = 295.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 165, 0 )
+theme = ExtResource( 3 )
+text = ": Accelerate"
+
+[node name="Brake" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 510.0
+margin_right = 295.0
+margin_bottom = 550.0
+alignment = 2
+
+[node name="S" type="TextureRect" parent="VBoxContainer/Brake"]
+margin_left = 48.0
+margin_right = 78.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 1 )
+stretch_mode = 6
+
+[node name="Slash" type="Label" parent="VBoxContainer/Brake"]
+margin_left = 82.0
+margin_right = 92.0
+margin_bottom = 40.0
+theme = ExtResource( 3 )
+text = "/"
+
+[node name="Down" type="TextureRect" parent="VBoxContainer/Brake"]
+margin_left = 96.0
+margin_right = 126.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 3 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/Brake"]
+margin_left = 130.0
+margin_right = 295.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 165, 0 )
+theme = ExtResource( 3 )
+text = ": Brake"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
