@@ -17,6 +17,7 @@ func _ready() -> void:
 	for obstacle_pos in obstacle_holder.get_children():
 		var instance : Spatial = obstacle_scenes[randi() % obstacle_scenes.size()].instance()
 		instance.transform.origin = obstacle_pos.transform.origin
+		instance.rotate(Vector3.UP, obstacle_pos.rotation.y)
 		instance.rotate(Vector3.BACK, randf() * deg2rad(360))
 		obstacle_holder.add_child(instance)
 		obstacle_pos.queue_free()

@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "Bezier",
-"language": "GDScript",
-"path": "res://Bezier.gd"
-}, {
 "base": "Spatial",
 "class": "Chunk",
 "language": "GDScript",
@@ -25,7 +20,6 @@ _global_script_classes=[ {
 "path": "res://Ship/Ship.gd"
 } ]
 _global_script_class_icons={
-"Bezier": "",
 "Chunk": "",
 "Ship": ""
 }

@@ -2,12 +2,12 @@ class_name Ship
 extends Spatial
 
 
-export (float) var max_speed := 75.0
-export (float) var acceleration_time := 1.0
+export (float) var max_speed := 100.0
+export (float) var acceleration_time := 2.0
 export (float) var deceleration_time := 1.5
 export (Curve) var acceleration : Curve
 
-export (float) var max_angle := 25.0
+export (float) var max_angle := 2.0
 export (float) var steering_time := 0.5
 export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
@@ -43,14 +43,14 @@ func _process(delta: float) -> void:
 	t_steer = update_t(t_steer, delta, steering_time if is_steering else -steer_back_time)
 	steer = get_updated_value(steering, 0.0, deg2rad(max_angle) * (steer_dir if is_steering else current_steer_dir), t_steer)
 	
-	var forward := Vector3.BACK.rotated(ground_normal, steer)
-	global_transform.basis = Basis(
-		ground_normal.rotated(forward, deg2rad(-90)),
-		ground_normal,
-		forward
-	)
+	var rotation_axis := transform.basis.y.cross(ground_normal)
+	if rotation_axis != Vector3.ZERO:
+		var angle := transform.basis.y.angle_to(ground_normal)
+		rotate(rotation_axis.normalized(), angle)
 	
-	var velocity := forward * speed * delta
+	rotate(transform.basis.y, steer)
+	
+	var velocity := global_transform.basis.z * speed * delta
 	global_transform.origin = ground_position + velocity
 
 
