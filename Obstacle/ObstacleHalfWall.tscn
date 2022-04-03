@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/CM/CM-LD_50.png" type="Texture" id=7]
 
 [sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
 flags_transparent = true
 
 [sub_resource type="BoxShape" id=1]
