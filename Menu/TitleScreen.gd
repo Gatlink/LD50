@@ -6,16 +6,24 @@ export (float) var video_duration : float = 10.0
 export (Array, Resource) var videos : Array
 
 
+onready var focus_icon : Texture = preload("res://Art/Menus/selector.png")
 onready var video_player : VideoPlayer = $VideoPlayer
 onready var fader : ColorRect = $Fader
 onready var tween : Tween = $Tween
 onready var fade_timer : Timer = $FadeTimer
+onready var play_button : Button = $Buttons/PlayButton
+onready var quit_button : Button = $Buttons/QuitButton
 onready var hide_color : Color = fader.color
 
 
 var transparent : Color
 var is_hidden := true
 var video_index := 0
+
+
+func _input(event: InputEvent) -> void:
+	if (event.is_action("ui_down") or event.is_action("ui_up")) and quit_button.get_focus_owner() == null:
+		quit_button.grab_focus()
 
 
 func _ready() -> void:
@@ -68,3 +76,8 @@ func _on_Timer_timeout() -> void:
 		fade_timer.start(video_duration - fade_time)
 	else:
 		fade_out()
+
+
+func _on_button_focus_entered() -> void:
+	play_button.icon = focus_icon if play_button.has_focus() else null
+	quit_button.icon = focus_icon if quit_button.has_focus() else null

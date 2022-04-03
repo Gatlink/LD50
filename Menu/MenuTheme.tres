@@ -3,7 +3,7 @@
 [ext_resource path="res://MarvinVisionsBig-Bold.otf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=7]
-size = 42
+size = 56
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -17,11 +17,12 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="DynamicFont" id=8]
-size = 32
+size = 24
 font_data = ExtResource( 1 )
 
 [resource]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_focus = Color( 0.941176, 0.643137, 0.133333, 1 )
 Button/colors/font_color_hover = Color( 0.941176, 0.643137, 0.133333, 1 )
 Button/fonts/font = SubResource( 7 )
 Button/styles/disabled = SubResource( 2 )
@@ -29,5 +30,5 @@ Button/styles/focus = SubResource( 3 )
 Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 5 )
 Button/styles/pressed = SubResource( 6 )
-Label/colors/font_color = Color( 0.933333, 0.933333, 0.933333, 1 )
+Label/colors/font_color = Color( 0.533333, 0.533333, 0.533333, 1 )
 Label/fonts/font = SubResource( 8 )

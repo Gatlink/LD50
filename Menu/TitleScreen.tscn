@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -18,11 +18,40 @@ region = Rect2( 324, 69, 13, 14 )
 atlas = ExtResource( 5 )
 region = Rect2( 511, 69, 13, 14 )
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 545, 69, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 307, 52, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 341, 52, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 290, 35, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 562, 69, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 528, 69, 13, 14 )
+
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 videos = [ ExtResource( 4 ), ExtResource( 1 ) ]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 anchor_right = 1.0
@@ -34,133 +63,212 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0784314, 0.00392157, 0.129412, 1 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -150.0
+margin_left = -200.0
 margin_right = -50.0
 margin_bottom = -50.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 100.0
-margin_bottom = 550.0
 custom_constants/separation = 10
 alignment = 2
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 438.0
-margin_right = 100.0
-margin_bottom = 489.0
+[node name="PlayButton" type="Button" parent="Buttons"]
+margin_top = 404.0
+margin_right = 150.0
+margin_bottom = 472.0
+focus_neighbour_top = NodePath("../QuitButton")
+focus_neighbour_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../QuitButton")
 theme = ExtResource( 3 )
 text = "Play"
+align = 2
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 499.0
-margin_right = 100.0
+[node name="QuitButton" type="Button" parent="Buttons"]
+margin_top = 482.0
+margin_right = 150.0
 margin_bottom = 550.0
+focus_neighbour_top = NodePath("../PlayButton")
+focus_neighbour_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../PlayButton")
 theme = ExtResource( 3 )
 text = "Quit"
+align = 2
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="FadeTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Controls" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
-margin_left = 50.0
+margin_left = 25.0
 margin_bottom = -50.0
 alignment = 2
 
-[node name="Accelerate" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 466.0
-margin_right = 295.0
-margin_bottom = 506.0
+[node name="Accelerate" type="HBoxContainer" parent="Controls"]
+margin_top = 452.0
+margin_right = 391.0
+margin_bottom = 482.0
 alignment = 2
 
-[node name="W" type="TextureRect" parent="VBoxContainer/Accelerate"]
-margin_right = 30.0
-margin_bottom = 40.0
+[node name="W" type="TextureRect" parent="Controls/Accelerate"]
+margin_left = 102.0
+margin_right = 132.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 1 )
 stretch_mode = 6
 
-[node name="Slash2" type="Label" parent="VBoxContainer/Accelerate"]
-margin_left = 34.0
-margin_right = 44.0
-margin_bottom = 40.0
+[node name="Slash2" type="Label" parent="Controls/Accelerate"]
+margin_left = 136.0
+margin_right = 143.0
+margin_bottom = 30.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Z" type="TextureRect" parent="VBoxContainer/Accelerate"]
-margin_left = 48.0
-margin_right = 78.0
-margin_bottom = 40.0
+[node name="Z" type="TextureRect" parent="Controls/Accelerate"]
+margin_left = 147.0
+margin_right = 177.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 2 )
 stretch_mode = 6
 
-[node name="Slash" type="Label" parent="VBoxContainer/Accelerate"]
-margin_left = 82.0
-margin_right = 92.0
-margin_bottom = 40.0
+[node name="Slash" type="Label" parent="Controls/Accelerate"]
+margin_left = 181.0
+margin_right = 188.0
+margin_bottom = 30.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Up" type="TextureRect" parent="VBoxContainer/Accelerate"]
-margin_left = 96.0
-margin_right = 126.0
-margin_bottom = 40.0
+[node name="Up" type="TextureRect" parent="Controls/Accelerate"]
+margin_left = 192.0
+margin_right = 222.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 3 )
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="VBoxContainer/Accelerate"]
-margin_left = 130.0
-margin_right = 295.0
-margin_bottom = 40.0
+[node name="Label" type="Label" parent="Controls/Accelerate"]
+margin_left = 226.0
+margin_right = 391.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Accelerate"
 
-[node name="Brake" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 510.0
-margin_right = 295.0
-margin_bottom = 550.0
+[node name="Brake" type="HBoxContainer" parent="Controls"]
+margin_top = 486.0
+margin_right = 391.0
+margin_bottom = 516.0
 alignment = 2
 
-[node name="S" type="TextureRect" parent="VBoxContainer/Brake"]
-margin_left = 48.0
-margin_right = 78.0
-margin_bottom = 40.0
+[node name="S" type="TextureRect" parent="Controls/Brake"]
+margin_left = 147.0
+margin_right = 177.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 1 )
 stretch_mode = 6
 
-[node name="Slash" type="Label" parent="VBoxContainer/Brake"]
-margin_left = 82.0
-margin_right = 92.0
-margin_bottom = 40.0
+[node name="Slash" type="Label" parent="Controls/Brake"]
+margin_left = 181.0
+margin_right = 188.0
+margin_bottom = 30.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Down" type="TextureRect" parent="VBoxContainer/Brake"]
-margin_left = 96.0
-margin_right = 126.0
-margin_bottom = 40.0
+[node name="Down" type="TextureRect" parent="Controls/Brake"]
+margin_left = 192.0
+margin_right = 222.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 30, 0 )
-texture = SubResource( 3 )
+texture = SubResource( 7 )
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="VBoxContainer/Brake"]
-margin_left = 130.0
-margin_right = 295.0
-margin_bottom = 40.0
+[node name="Label" type="Label" parent="Controls/Brake"]
+margin_left = 226.0
+margin_right = 391.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Brake"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[node name="Turn" type="HBoxContainer" parent="Controls"]
+margin_top = 520.0
+margin_right = 391.0
+margin_bottom = 550.0
+alignment = 2
+
+[node name="A" type="TextureRect" parent="Controls/Turn"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 4 )
+stretch_mode = 6
+
+[node name="D" type="TextureRect" parent="Controls/Turn"]
+margin_left = 34.0
+margin_right = 64.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 5 )
+stretch_mode = 6
+
+[node name="Slash" type="Label" parent="Controls/Turn"]
+margin_left = 68.0
+margin_right = 75.0
+margin_bottom = 30.0
+theme = ExtResource( 3 )
+text = "/"
+
+[node name="Q" type="TextureRect" parent="Controls/Turn"]
+margin_left = 79.0
+margin_right = 109.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 6 )
+stretch_mode = 6
+
+[node name="D2" type="TextureRect" parent="Controls/Turn"]
+margin_left = 113.0
+margin_right = 143.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 5 )
+stretch_mode = 6
+
+[node name="Slash2" type="Label" parent="Controls/Turn"]
+margin_left = 147.0
+margin_right = 154.0
+margin_bottom = 30.0
+theme = ExtResource( 3 )
+text = "/"
+
+[node name="Left" type="TextureRect" parent="Controls/Turn"]
+margin_left = 158.0
+margin_right = 188.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 9 )
+stretch_mode = 6
+
+[node name="Right" type="TextureRect" parent="Controls/Turn"]
+margin_left = 192.0
+margin_right = 222.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 10 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Controls/Turn"]
+margin_left = 226.0
+margin_right = 391.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 165, 0 )
+theme = ExtResource( 3 )
+text = ": Turn"
+
 [connection signal="timeout" from="FadeTimer" to="." method="_on_Timer_timeout"]
+[connection signal="focus_entered" from="Buttons/PlayButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="focus_entered" from="Buttons/QuitButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
