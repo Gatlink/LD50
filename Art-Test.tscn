@@ -1,23 +1,41 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=1]
 [ext_resource path="res://Art/Pipes/LD50-Pipe-01.glb" type="PackedScene" id=2]
 [ext_resource path="res://Art/Obstacles/LD50-Obstacle-Wall-Half-01.glb" type="PackedScene" id=3]
 [ext_resource path="res://Art/Obstacles/LD50-Obstacle-Tower-Four-01.glb" type="PackedScene" id=4]
 [ext_resource path="res://Art/Bonus/LD50-Bonus-Builder-01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Art/Env-Cartoon-01.tres" type="Environment" id=6]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="LD50-Ship-01" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.6141 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.712602, -0.379315, 0.590186, -0.701569, -0.38528, 0.599467, 0, -0.841237, -0.540666, 2.86606, 4.53647, -1.96089 )
+transform = Transform( 0.712602, -0.379315, 0.590186, -0.701569, -0.38528, 0.599467, 0, -0.841237, -0.540667, 2.86606, 4.53647, -13.9356 )
 
 [node name="LD50-Pipe-01" parent="." instance=ExtResource( 2 )]
 
+[node name="LD50-Pipe-02" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.9901 )
+
+[node name="LD50-Pipe-03" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 199.449 )
+
 [node name="LD50-Bonus-Builder-01" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42322, 6.7148 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86324, 3.16595, 20.837 )
+
+[node name="LD50-Bonus-Builder-02" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2743, 3.16595, 83.1844 )
 
 [node name="LD50-Obstacle-Tower-Four-01" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.464 )
 
 [node name="LD50-Obstacle-Wall-Half-01" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8791 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 1.83084e-09, -8.74036e-08, 0, 0.999781, 0.0209424, 8.74228e-08, 0.0209424, -0.999781, 0, 4.93305, 1.20464 )
+environment = ExtResource( 6 )
+far = 500.0
