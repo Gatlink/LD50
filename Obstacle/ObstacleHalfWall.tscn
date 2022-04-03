@@ -16,7 +16,6 @@ extents = Vector3( 15, 7.5, 2.5 )
 
 [node name="ObstacleHalfWall" type="Spatial"]
 script = ExtResource( 2 )
-ad_probability = 1.0
 ads = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="Graph" type="Spatial" parent="."]
