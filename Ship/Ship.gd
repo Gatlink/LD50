@@ -13,11 +13,16 @@ export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
 
 export (float) var normal_smooth := 0.1
+export (float) var max_tilt := 30.0
+export (float) var max_yaw := 10.0
+export (float) var tilt_duration := 0.2
 
 
 onready var ground_ray : RayCast = $Rays/GroundRayMid
+onready var graph : Spatial = $Graph
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
+#onready var ship_animation : AnimationPlayer = $"Graph/LD50-Ship-01/AnimationPlayer"
 
 
 var speed : float
@@ -27,6 +32,9 @@ var steer : float
 var t_steer : float
 
 var is_dead := false
+
+var tilt : float
+var t_tilt : float
 
 
 func _process(delta: float) -> void:
@@ -52,6 +60,8 @@ func _process(delta: float) -> void:
 	
 	var velocity := global_transform.basis.z * speed * delta
 	global_transform.origin = ground_position + velocity
+	
+	update_animation(delta)
 
 
 func _physics_process(_delta: float) -> void:
@@ -67,6 +77,16 @@ func update_t(t : float, delta : float, duration: float) -> float:
 
 func get_updated_value(curve : Curve, min_value : float, max_value : float, t : float) -> float:
 	return min_value + curve.interpolate(t) * max_value
+
+
+func update_animation(delta : float) -> void:
+	var is_tilting := steer != 0 and (sign(steer) == sign(tilt) or tilt == 0)
+	t_tilt = update_t(t_tilt, delta, tilt_duration if is_tilting else -tilt_duration)
+	
+	var tilt_dir := sign(steer) if is_tilting else sign(tilt)
+	tilt = lerp(0, max_tilt, t_tilt) * tilt_dir
+	graph.rotation.z = deg2rad(tilt)
+	graph.rotation.y = deg2rad(tilt / max_tilt * max_yaw)
 
 
 func _on_HitBox_area_entered(_area: Area) -> void:

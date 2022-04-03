@@ -8,6 +8,4 @@ onready var ship : Ship = get_node(ship_path)
 
 
 func _physics_process(_delta: float) -> void:
-	pass
-#	unit_offset = abs(ship.speed) / ship.max_speed
-#	rotation.z = ship.rotation.z
+	unit_offset = abs(ship.speed) / ship.max_speed
