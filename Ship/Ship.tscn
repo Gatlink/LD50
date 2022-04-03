@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
 
 [sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 0 ), 0.0, 1.79679, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 5.49399e-07, 0, 0, Vector2( 0.5, 0.5 ), 2.03636, 2.03636, 0, 0, Vector2( 1, 1 ), 0.19867, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -53,6 +53,25 @@ emission_on_uv2 = false
 [sub_resource type="SphereMesh" id=12]
 material = SubResource( 13 )
 
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Brake"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Boost"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=18]
+blend_point_0/node = SubResource( 19 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 20 )
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource( 21 )
+blend_point_2/pos = 1.0
+
+[sub_resource type="AnimationNodeAdd2" id=22]
+
 [sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Tilt-Left"
 
@@ -66,10 +85,15 @@ blend_point_1/node = SubResource( 15 )
 blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeBlendTree" id=17]
-graph_offset = Vector2( -614, -91 )
+graph_offset = Vector2( -614, 51.75 )
+nodes/Acceleration/node = SubResource( 18 )
+nodes/Acceleration/position = Vector2( 80, 260 )
+nodes/Add2/node = SubResource( 22 )
+nodes/Add2/position = Vector2( 340, 160 )
 nodes/Tilt/node = SubResource( 16 )
 nodes/Tilt/position = Vector2( 80, 120 )
-node_connections = [ "output", 0, "Tilt" ]
+nodes/output/position = Vector2( 580, 160 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Tilt", "Add2", 1, "Acceleration" ]
 
 [node name="Ship" type="Spatial"]
 script = ExtResource( 1 )
@@ -83,10 +107,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0 )
 
 [node name="Brake_Handle-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-L-01" index="0"]
-transform = Transform( 0.986884, 0.161429, -9.68575e-08, 1.11759e-07, -2.38419e-07, 1, 0.161429, -0.986884, -2.38419e-07, -1.01631e-08, 0.0355565, -5.25677e-09 )
+transform = Transform( 0.580949, 0.81394, 0, 8.9407e-08, -1.19209e-07, 1, 0.81394, -0.580949, -1.19209e-07, -1.01631e-08, 0.0355565, -5.25677e-09 )
 
 [node name="Brake_Handle-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-R-01" index="0"]
-transform = Transform( -1.19209e-07, 1, -2.98023e-08, -5.96046e-08, 0, -1, -1, -1.49012e-07, 1.19209e-07, 1.98766e-09, 0.0347652, -1.48345e-09 )
+transform = Transform( 0.709482, 0.704723, -5.96046e-08, -1.19209e-07, 0, -1, -0.704723, 0.709482, 5.96046e-08, 1.98766e-09, 0.0347652, -1.48345e-09 )
+
+[node name="Engine-WIng-L-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="0"]
+transform = Transform( 0.93435, -0.101223, 0.344265, 6.70552e-08, 1.06247, 0.258277, -0.356356, -0.265401, 0.902649, 0.0222666, 0.0769282, 0.0542539 )
+
+[node name="Engine-WIng-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="1"]
+transform = Transform( 0.89898, -0.26659, -0.364797, 0.263279, 1.06095, 0.0077851, 0.350028, -0.113324, 0.931055, 0.0543271, 0.0769283, 0.023064 )
+
+[node name="Engine-WIng-L-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="2"]
+transform = Transform( 0.890538, -0.261841, 0.387631, 0.258277, 1.06247, -1.15484e-07, -0.374479, 0.110106, 0.921815, 0.0548261, 0.0769283, -0.022598 )
+
+[node name="Engine-WIng-L-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="3"]
+transform = Transform( 0.924238, -0.108455, -0.368862, -6.33299e-08, 1.06247, -0.258277, 0.381817, 0.262529, 0.89288, 0.0222666, 0.0769283, -0.0547112 )
+
+[node name="Engine-WIng-R-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="4"]
+transform = Transform( 0.916952, 0.113335, -0.385461, -8.9407e-08, 1.06247, 0.258277, 0.398998, -0.260459, 0.88584, -0.0222133, 0.0769282, 0.0542539 )
+
+[node name="Engine-WIng-R-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="5"]
+transform = Transform( 0.934026, 0.101464, 0.345085, 7.45058e-08, 1.06247, -0.258277, -0.357205, 0.265309, 0.902336, -0.0222133, 0.0769283, -0.0547112 )
+
+[node name="Engine-WIng-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="6"]
+transform = Transform( 0.901066, 0.256195, 0.365807, -0.253252, 1.0639, 0.00778512, -0.352057, -0.1096, 0.930658, -0.0543635, 0.0769283, 0.023064 )
+
+[node name="Engine-WIng-R-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="7"]
+transform = Transform( 0.902577, 0.26538, -0.35655, -0.258277, 1.06247, -1.19209e-07, 0.344453, 0.101278, 0.934276, -0.0538645, 0.0769283, -0.022598 )
 
 [node name="Rays" type="Spatial" parent="."]
 
@@ -127,7 +175,9 @@ draw_pass_1 = SubResource( 12 )
 tree_root = SubResource( 17 )
 anim_player = NodePath("../Graph/LD50-Ship-01/AnimationPlayer")
 active = true
-parameters/Tilt/blend_position = 0.0
+parameters/Acceleration/blend_position = 0.997855
+parameters/Add2/add_amount = 0.5
+parameters/Tilt/blend_position = 0.603217
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
