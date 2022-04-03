@@ -1,0 +1,46 @@
+extends Control
+
+
+export (float) var fade_time : float = 1.0
+export (float) var video_duration : float = 10.0
+
+
+onready var video_player : VideoPlayer = $VideoPlayer
+onready var fader : ColorRect = $Fader
+onready var tween : Tween = $Tween
+onready var hide_color : Color = fader.color
+
+
+var transparent : Color
+
+
+func _ready() -> void:
+	transparent = hide_color
+	transparent.a = 0
+
+
+func _process(_delta: float) -> void:
+	if not video_player.is_playing():
+		play_video()
+
+
+func play_video() ->  void:
+	video_player.play()
+	
+	yield(get_tree().create_timer(1.0), "timeout")
+	
+	fade_in()
+	
+	yield(get_tree().create_timer(video_duration - fade_time), "timeout")
+	
+	fade_out()
+
+
+func fade_in() -> void:
+	tween.interpolate_property(fader, "color", hide_color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
+
+
+func fade_out() -> void:
+	tween.interpolate_property(fader, "color", transparent, hide_color, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.start()
