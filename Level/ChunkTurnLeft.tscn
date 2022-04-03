@@ -34,4 +34,32 @@ transform = Transform( 0.664709, 0, 0.747102, 0, 1, 0, -0.747102, 0, 0.664709, -
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79318, 0, -14.0896 )
 aabb = AABB( -29.2081, -2, -119.162, 58.4162, 35, 138.324 )
 
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.464398, 30.9796, -24.7784 )
+spot_range = 838.965
+spot_attenuation = 0.90125
+spot_angle = 20.98
+spot_angle_attenuation = 1060.11
+
+[node name="SpotLight4" type="SpotLight" parent="."]
+transform = Transform( 0.873279, 2.12971e-08, -0.48722, 0.48722, -3.81723e-08, 0.873279, 0, -1, -4.37114e-08, -0.464397, 30.9796, -52.288 )
+spot_range = 838.965
+spot_attenuation = 0.90125
+spot_angle = 20.98
+spot_angle_attenuation = 1060.11
+
+[node name="SpotLight3" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.464398, 30.9796, -114.305 )
+spot_range = 838.965
+spot_attenuation = 0.90125
+spot_angle = 20.98
+spot_angle_attenuation = 1060.11
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -14.2132, 16.3034, -84.7887 )
+spot_range = 838.965
+spot_attenuation = 0.90125
+spot_angle = 20.98
+spot_angle_attenuation = 1060.11
+
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
