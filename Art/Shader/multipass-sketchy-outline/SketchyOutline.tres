@@ -1,0 +1,62 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=2]
+
+[ext_resource path="res://multipass-sketchy-outline/sketchy_outline.shader" type="Shader" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode cull_back, unshaded;
+
+uniform sampler2D outline_noise_tex;
+uniform vec4 outline_color:hint_color;
+uniform float scissor_value = 0.5;
+uniform vec2 uv_scale = vec2(1.0);
+uniform sampler2D falloff_curve;
+uniform float outline_size = 0.1;
+uniform float offset_fres = 0.3;
+uniform float fps = 5.0;
+
+varying float h;
+
+void vertex(){
+	VERTEX += NORMAL * outline_size * texture(outline_noise_tex, UV).r;
+	h = (WORLD_MATRIX * vec4(VERTEX, 1.0)).y;
+}
+
+void fragment(){
+	float fres = abs(dot(normalize(-NORMAL), normalize(VERTEX)));
+	vec3 nor = normalize(NORMAL);
+	float angle = atan(nor.y, nor.x);
+	angle /= 3.14;
+	
+	float fres_remap = texture(falloff_curve, vec2(1.0 - fres)).r + offset_fres;
+	ALPHA = texture(outline_noise_tex, vec2(angle * uv_scale.x + SCREEN_UV.x, nor.z * uv_scale.y + floor(TIME * fps)/fps)).r * fres_remap;
+	ALBEDO = outline_color.rgb;
+	ALPHA_SCISSOR = scissor_value;
+}"
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.371345, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.725146, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.28, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/outline_color = null
+shader_param/scissor_value = 0.5
+shader_param/uv_scale = Vector2( 1, 5.194 )
+shader_param/outline_size = 0.075
+shader_param/offset_fres = 0.24
+shader_param/fps = 5.0
+shader_param/outline_noise_tex = SubResource( 5 )
+shader_param/falloff_curve = SubResource( 3 )
+
+[resource]
+next_pass = SubResource( 6 )
+shader = ExtResource( 1 )
