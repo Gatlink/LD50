@@ -3,7 +3,7 @@
 [ext_resource path="res://MarvinVisionsBig-Bold.otf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=7]
-size = 32
+size = 42
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]

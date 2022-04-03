@@ -1,17 +1,19 @@
 extends Control
 
 
-export (float) var fade_time : float = 1.0
+export (float) var fade_time : float = 3.0
 export (float) var video_duration : float = 10.0
 
 
 onready var video_player : VideoPlayer = $VideoPlayer
 onready var fader : ColorRect = $Fader
 onready var tween : Tween = $Tween
+onready var fade_timer : Timer = $FadeTimer
 onready var hide_color : Color = fader.color
 
 
 var transparent : Color
+var is_hidden := true
 
 
 func _ready() -> void:
@@ -26,21 +28,38 @@ func _process(_delta: float) -> void:
 
 func play_video() ->  void:
 	video_player.play()
-	
-	yield(get_tree().create_timer(1.0), "timeout")
-	
-	fade_in()
-	
-	yield(get_tree().create_timer(video_duration - fade_time), "timeout")
-	
-	fade_out()
+	fade_timer.start(1)
 
 
 func fade_in() -> void:
-	tween.interpolate_property(fader, "color", hide_color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
+	is_hidden = false
+# warning-ignore:return_value_discarded
+	tween.interpolate_property(fader, "color", hide_color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_IN)
+# warning-ignore:return_value_discarded
 	tween.start()
 
 
 func fade_out() -> void:
+	is_hidden = true
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(fader, "color", transparent, hide_color, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
+# warning-ignore:return_value_discarded
 	tween.start()
+
+
+func _on_PlayButton_pressed() -> void:
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Main.tscn")
+
+
+func _on_QuitButton_pressed() -> void:
+	pass
+	get_tree().quit()
+
+
+func _on_Timer_timeout() -> void:
+	if is_hidden:
+		fade_in()
+		fade_timer.start(video_duration - fade_time)
+	else:
+		fade_out()
