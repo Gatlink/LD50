@@ -8,7 +8,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-fade_time = 3.0
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 anchor_right = 1.0
@@ -35,17 +34,24 @@ custom_constants/separation = 10
 alignment = 2
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 460.0
+margin_top = 438.0
 margin_right = 100.0
-margin_bottom = 500.0
+margin_bottom = 489.0
 theme = ExtResource( 3 )
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 510.0
+margin_top = 499.0
 margin_right = 100.0
 margin_bottom = 550.0
 theme = ExtResource( 3 )
 text = "Quit"
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="timeout" from="FadeTimer" to="." method="_on_Timer_timeout"]
