@@ -7,7 +7,6 @@
 [ext_resource path="res://Level/Chunk.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Level/ChunkTurnRight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Level/IntroChunk.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Art/Env-Cartoon-02.tres" type="Environment" id=8]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -56,7 +55,6 @@ ship_path = NodePath("../../Ship")
 
 [node name="Camera" type="Camera" parent="CameraPath/PathFollow"]
 transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 2.21071, 6.0179 )
-environment = ExtResource( 7 )
 far = 200.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
