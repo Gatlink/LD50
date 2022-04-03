@@ -20,6 +20,7 @@ export (float) var tilt_duration := 0.2
 
 onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var graph : Spatial = $Graph
+onready var animation_tree : AnimationTree = $AnimationTree
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 #onready var ship_animation : AnimationPlayer = $"Graph/LD50-Ship-01/AnimationPlayer"
@@ -87,6 +88,8 @@ func update_animation(delta : float) -> void:
 	tilt = lerp(0, max_tilt, t_tilt) * tilt_dir
 	graph.rotation.z = deg2rad(tilt)
 	graph.rotation.y = deg2rad(tilt / max_tilt * max_yaw)
+	
+	animation_tree.set("parameters/Tilt/blend_position", tilt / max_tilt)
 
 
 func _on_HitBox_area_entered(_area: Area) -> void:
