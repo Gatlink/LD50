@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Art/Obstacles/LD50-Obstacle-Tower-Four-02.glb" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 15, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 7.5, 7.5, 1 )
+
+[node name="ObstacleFourPillars" type="Spatial"]
+
+[node name="Graph" type="Spatial" parent="."]
+
+[node name="LD50-Obstacle-Tower-Four-02" parent="Graph" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -50 )
+
+[node name="Area" type="Area" parent="."]
+collision_mask = 0
+input_ray_pickable = false
+monitoring = false
+
+[node name="Vertical" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Horizontal" type="CollisionShape" parent="Area"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Wall" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -7.5, 0 )
+shape = SubResource( 2 )

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Level/Chunk.gd" type="Script" id=1]
 [ext_resource path="res://Level/Pipes/LD50-Pipe-R-01.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Obstacle/ObstacleFourPillars.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Obstacle/ObstacleHalfWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Obstacle/ObstacleFourPillars3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Obstacle/ObstacleFourPillars2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Obstacle/ObstacleFourPillars.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Obstacle/ObstacleHalfWall.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_blend_mode = 1
@@ -11,7 +13,7 @@ albedo_color = Color( 1, 0, 0, 0.27451 )
 
 [node name="ChunkRight" type="Spatial"]
 script = ExtResource( 1 )
-obstacle_scenes = [ ExtResource( 3 ), ExtResource( 4 ) ]
+obstacle_scenes = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="LD50-Pipe-R-01" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0225372, -0.102366, -0.00710297 )
