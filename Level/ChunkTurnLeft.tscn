@@ -19,21 +19,14 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 [node name="Obstacles" type="Spatial" parent="."]
 
 [node name="ObstaclePosition" type="CSGCylinder" parent="Obstacles"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, -35.9262 )
-radius = 17.5
-height = 0.1
-sides = 20
-material = SubResource( 1 )
-
-[node name="ObstaclePosition2" type="CSGCylinder" parent="Obstacles"]
-transform = Transform( 0.832602, 0.553871, -2.42105e-08, 0, -4.37114e-08, -1, -0.553871, 0.832602, -3.63942e-08, 0, 15, -88.6028 )
+transform = Transform( 0.999507, 0.0313933, -1.37225e-09, 0, -4.37114e-08, -1, -0.0313933, 0.999507, -4.36898e-08, 3.89613, 15, -64.6601 )
 radius = 17.5
 height = 0.1
 sides = 20
 material = SubResource( 1 )
 
 [node name="EndPosition" type="Position3D" parent="."]
-transform = Transform( 0.673774, 0, 0.738938, 0, 1, 0, -0.738938, 0, 0.673774, -19.6084, 0, -114.104 )
+transform = Transform( 0.664709, 0, 0.747102, 0, 1, 0, -0.747102, 0, 0.664709, -21.0424, 0, -115.38 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79318, 0, -14.0896 )

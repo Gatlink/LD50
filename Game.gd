@@ -19,10 +19,11 @@ func _ready() -> void:
 
 
 func on_chunk_screen_exited(chunk : Chunk) -> void:
-	for i in chunks.size():
-		if chunks[i] == chunk:
-			chunks.remove(i)
-			break
+	if chunks[0] != chunk:
+		return
+	
+	chunks.remove(0)
+	chunk.queue_free()
 	
 	var end_pos : Spatial = chunks[chunks.size() - 1].end_position
 	var index := randi() % chunk_scenes.size()
