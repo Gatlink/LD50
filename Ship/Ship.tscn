@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
 [ext_resource path="res://HUD/TopText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Ship/particle_mat.tres" type="SphereMesh" id=4]
 [ext_resource path="res://SFX/engine.wav" type="AudioStream" id=5]
+[ext_resource path="res://SFX/explosion.wav" type="AudioStream" id=6]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 5.49399e-07, 0, 0, Vector2( 0.5, 0.5 ), 2.03636, 2.03636, 0, 0, Vector2( 1, 1 ), 0.19867, 0.0, 0, 0 ]
@@ -197,8 +198,11 @@ parameters/Tilt/blend_position = -0.000536203
 
 [node name="TopText" parent="." instance=ExtResource( 3 )]
 
-[node name="Engine" type="AudioStreamPlayer" parent="."]
+[node name="SFX_Engine" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="SFX_Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="done" from="TopText" to="." method="_on_TopText_done"]

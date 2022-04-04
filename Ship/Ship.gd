@@ -25,7 +25,8 @@ onready var animation_tree : AnimationTree = $AnimationTree
 onready var top_text : TopText = $TopText
 onready var explosion : Particles = $Explosion
 onready var trail : Particles = $Graph/Trail
-onready var sfx_engine : AudioStreamPlayer = $Engine
+onready var sfx_engine : AudioStreamPlayer = $SFX_Engine
+onready var sfx_explosion : AudioStreamPlayer = $SFX_Explosion
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -114,10 +115,11 @@ func update_animation(delta : float) -> void:
 func _on_HitBox_area_entered(_area: Area) -> void:
 	is_moving = false
 	sfx_engine.playing = false
+	sfx_explosion.playing = true
 	$Graph.visible = false
 	explosion.emitting = true
 	
-	yield(get_tree().create_timer(explosion.lifetime + 0.5), "timeout")
+	yield(sfx_explosion, "finished")
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/GameOverScreen.tscn")
