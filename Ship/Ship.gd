@@ -33,6 +33,8 @@ onready var explosion : Particles = $Explosion
 onready var trail : Particles = $Graph/Trail
 onready var sfx_engine : AudioStreamPlayer = $SFX_Engine
 onready var sfx_explosion : AudioStreamPlayer = $SFX_Explosion
+onready var sfx_bonus : AudioStreamPlayer = $SFX_Bonus
+onready var sfx_bonus_full : AudioStreamPlayer = $SFX_BonusFull
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -132,6 +134,10 @@ func _on_HitBox_area_entered(area: Area) -> void:
 		else:
 			bonus_score += bonus_points * score_mult
 			score_gate.collect()
+			if score_mult > 1:
+				sfx_bonus_full.play()
+			else:
+				sfx_bonus.play()
 		return
 	
 	emit_signal("crashed")
