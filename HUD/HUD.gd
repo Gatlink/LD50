@@ -13,4 +13,4 @@ func _process(_delta: float) -> void:
 	var seconds := int(ship.elapsed_time)
 # warning-ignore:integer_division
 	time_label.text = "%02d:%02d.%02d" % [seconds / 60, seconds % 60, (ship.elapsed_time - seconds) * 100]
-	score_label.text = str(ship.score)
+	score_label.text = str(ship.get_total_score())

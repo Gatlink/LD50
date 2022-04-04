@@ -1,18 +1,33 @@
 extends VBoxContainer
 
 
-onready var time_label : Label = $Time/Label
-onready var score_label : Label = $Score/Label
+onready var time_label : Label = $ElapsedTime
+onready var time_value : Label = $Time/Value
+onready var distance_value : Label = $Distance/Value
+onready var bonus_value : Label = $Bonuses/Value
+onready var total_value : Label = $Total/Value
+onready var best_value : Label = $Best/Value
 
 
 func _ready() -> void:
 	var save := File.new()
+# warning-ignore:return_value_discarded
 	save.open("user://user.save", File.READ)
 	
-	var lines := []
+	var infos : Array
+	var best := 0
 	while save.get_position() < save.get_len():
-		lines.append(save.get_line())
+		var line := save.get_line()
+		infos = line.split("|")
+		
+		var current := int(infos[4])
+		if current > best:
+			best = current
 	
-	var infos : Array = lines[lines.size() - 1].split("|")
 	time_label.text = infos[0]
-	score_label.text = infos[1]
+	time_value.text = "+" + infos[1]
+	distance_value.text = "+" + infos[2]
+	bonus_value.text = "+" + infos[3]
+	total_value.text = infos[4]
+	best_value.text = str(best)
+	

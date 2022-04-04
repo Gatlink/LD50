@@ -47,7 +47,8 @@ var tilt : float
 var t_tilt : float
 
 var countdown : int
-var score : int
+var distance_score : int
+var bonus_score : int
 var elapsed_time : float
 
 
@@ -122,7 +123,10 @@ func update_animation(delta : float) -> void:
 func _on_HitBox_area_entered(area: Area) -> void:
 	var score_gate := area as ScoreGate
 	if score_gate != null:
-		score += score_gate.value
+		if score_gate.type == "Gate":
+			distance_score += score_gate.value
+		else:
+			bonus_score += score_gate.value
 		return
 	
 	emit_signal("crashed")
@@ -135,14 +139,18 @@ func _on_HitBox_area_entered(area: Area) -> void:
 	var seconds := int(elapsed_time)
 	var save : File = File.new()
 # warning-ignore:return_value_discarded
-	save.open("user://user.save", File.WRITE)
+	save.open("user://user.save", File.READ_WRITE)
 	save.seek_end()
-	save.store_line("%02d:%02d.%02d|%d" % [
+	save.store_line("%02d:%02d.%02d|%d|%d|%d|%d" % [
 # warning-ignore:integer_division
 		seconds / 60,
 		seconds % 60,
 		(elapsed_time - seconds) * 100,
-		score
+# warning-ignore:integer_division
+		int(elapsed_time) / 5,
+		distance_score,
+		bonus_score,
+		get_total_score()
 	])
 	save.close()
 	
@@ -150,6 +158,11 @@ func _on_HitBox_area_entered(area: Area) -> void:
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/GameOverScreen.tscn")
+
+
+func get_total_score() -> int:
+# warning-ignore:integer_division
+	return distance_score + bonus_score + int(elapsed_time) / 5
 
 
 func _on_TopText_done() -> void:

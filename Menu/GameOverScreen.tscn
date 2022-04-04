@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Menu/TitleScreen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Menus/score.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/Menus/Prog.png" type="Texture" id=7]
 [ext_resource path="res://tilemap.png" type="Texture" id=8]
 [ext_resource path="res://MarvinVisionsSmall-Medium.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Art/Menus/best.png" type="Texture" id=10]
 
 [sub_resource type="InputEventAction" id=5]
 action = "reload"
@@ -29,13 +30,30 @@ size = 22
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 102
+size = 72
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 resource_local_to_scene = true
 size = 32
 font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=7]
+resource_local_to_scene = true
+size = 24
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 24
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 20
+font_data = ExtResource( 9 )
 
 [node name="GameOverScreen" instance=ExtResource( 1 )]
 rect_pivot_offset = Vector2( -544, 35 )
@@ -143,34 +161,45 @@ stretch_mode = 6
 
 [node name="Recap" type="VBoxContainer" parent="." index="13"]
 margin_left = 100.0
-margin_top = 50.0
+margin_top = 30.0
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/separation = 15
 script = ExtResource( 4 )
 
 [node name="Title" type="Label" parent="Recap" index="0"]
-margin_right = 486.0
-margin_bottom = 123.0
+margin_right = 342.0
+margin_bottom = 87.0
 custom_fonts/font = SubResource( 1 )
 text = "Game over"
 
-[node name="ColorRect" type="ColorRect" parent="Recap" index="1"]
-margin_top = 138.0
-margin_right = 300.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 300, 10 )
+[node name="ElapsedTime" type="Label" parent="Recap" index="1"]
+margin_top = 102.0
+margin_right = 122.0
+margin_bottom = 142.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 8 )
+text = "00:00.00"
+valign = 1
+
+[node name="Line" type="ColorRect" parent="Recap" index="2"]
+margin_top = 157.0
+margin_right = 250.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 250, 5 )
 size_flags_horizontal = 0
 
-[node name="Time" type="HBoxContainer" parent="Recap" index="2"]
-margin_top = 163.0
-margin_right = 486.0
-margin_bottom = 203.0
+[node name="Time" type="HBoxContainer" parent="Recap" index="3"]
+margin_top = 177.0
+margin_right = 342.0
+margin_bottom = 207.0
 custom_constants/separation = 15
 
 [node name="Icon" type="TextureRect" parent="Recap/Time" index="0"]
+visible = false
 margin_right = 64.0
-margin_bottom = 40.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 64, 0 )
 size_flags_horizontal = 5
 texture = ExtResource( 2 )
@@ -178,38 +207,207 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Recap/Time" index="1"]
-margin_left = 79.0
-margin_right = 201.0
-margin_bottom = 40.0
+margin_right = 52.0
+margin_bottom = 30.0
 size_flags_horizontal = 8
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 7 )
-text = "00:00.00"
+custom_fonts/font = SubResource( 9 )
+text = "Time"
 align = 2
 valign = 1
 
-[node name="Score" type="HBoxContainer" parent="Recap" index="3"]
-margin_top = 218.0
-margin_right = 486.0
-margin_bottom = 258.0
+[node name="Spacer" type="Control" parent="Recap/Time" index="2"]
+margin_left = 67.0
+margin_right = 302.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Recap/Time" index="3"]
+margin_left = 317.0
+margin_right = 342.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 7 )
+text = "+0"
+align = 2
+valign = 1
+
+[node name="Distance" type="HBoxContainer" parent="Recap" index="4"]
+margin_top = 222.0
+margin_right = 342.0
+margin_bottom = 252.0
 custom_constants/separation = 15
 
-[node name="Icon" type="TextureRect" parent="Recap/Score" index="0"]
+[node name="Icon" type="TextureRect" parent="Recap/Distance" index="0"]
+visible = false
 margin_right = 64.0
-margin_bottom = 40.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 64, 0 )
 size_flags_horizontal = 5
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Recap/Score" index="1"]
-margin_left = 79.0
-margin_right = 97.0
-margin_bottom = 40.0
+[node name="Label" type="Label" parent="Recap/Distance" index="1"]
+margin_right = 96.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 9 )
+text = "Distance"
+align = 2
+valign = 1
+
+[node name="Spacer" type="Control" parent="Recap/Distance" index="2"]
+margin_left = 111.0
+margin_right = 302.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Recap/Distance" index="3"]
+margin_left = 317.0
+margin_right = 342.0
+margin_bottom = 30.0
 size_flags_horizontal = 8
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 7 )
+text = "+0"
+align = 2
+valign = 1
+
+[node name="Bonuses" type="HBoxContainer" parent="Recap" index="5"]
+margin_top = 267.0
+margin_right = 342.0
+margin_bottom = 297.0
+custom_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="Recap/Bonuses" index="0"]
+visible = false
+margin_right = 64.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 64, 0 )
+size_flags_horizontal = 5
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Recap/Bonuses" index="1"]
+margin_right = 70.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 9 )
+text = "Bonus"
+align = 2
+valign = 1
+
+[node name="Spacer" type="Control" parent="Recap/Bonuses" index="2"]
+margin_left = 85.0
+margin_right = 302.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Recap/Bonuses" index="3"]
+margin_left = 317.0
+margin_right = 342.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 7 )
+text = "+0"
+align = 2
+valign = 1
+
+[node name="Line2" type="ColorRect" parent="Recap" index="6"]
+margin_top = 312.0
+margin_right = 250.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 250, 5 )
+size_flags_horizontal = 0
+
+[node name="Total" type="HBoxContainer" parent="Recap" index="7"]
+margin_top = 332.0
+margin_right = 342.0
+margin_bottom = 362.0
+custom_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="Recap/Total" index="0"]
+margin_right = 64.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 64, 0 )
+size_flags_horizontal = 5
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Recap/Total" index="1"]
+margin_left = 79.0
+margin_right = 142.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 10 )
+text = "Total"
+align = 2
+valign = 1
+
+[node name="Spacer" type="Control" parent="Recap/Total" index="2"]
+margin_left = 157.0
+margin_right = 314.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Recap/Total" index="3"]
+margin_left = 329.0
+margin_right = 342.0
+margin_bottom = 30.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="Best" type="HBoxContainer" parent="Recap" index="8"]
+margin_top = 377.0
+margin_right = 342.0
+margin_bottom = 402.0
+custom_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="Recap/Best" index="0"]
+margin_right = 64.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 64, 0 )
+size_flags_horizontal = 5
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Recap/Best" index="1"]
+margin_left = 79.0
+margin_right = 120.0
+margin_bottom = 25.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 11 )
+text = "Best"
+align = 2
+valign = 1
+
+[node name="Spacer" type="Control" parent="Recap/Best" index="2"]
+margin_left = 135.0
+margin_right = 315.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+
+[node name="Value" type="Label" parent="Recap/Best" index="3"]
+margin_left = 330.0
+margin_right = 342.0
+margin_bottom = 25.0
+size_flags_horizontal = 8
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 11 )
 text = "0"
 align = 2
 valign = 1
