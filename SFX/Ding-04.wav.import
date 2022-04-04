@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ding-04.wav-a8f7f7bd66a3d314738a009a27f5315c.sample"
+
+[deps]
+
+source_file="res://SFX/Ding-04.wav"
+dest_files=[ "res://.import/Ding-04.wav-a8f7f7bd66a3d314738a009a27f5315c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
