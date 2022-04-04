@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=1]
 [ext_resource path="res://Art/Pipes/LD50-Pipe-01.glb" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Art/Obstacles/LD50-Obstacle-Tower-Four-01.glb" type="PackedScene" id=4]
 [ext_resource path="res://Art/Bonus/LD50-Bonus-Builder-01.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Art/Env-Cartoon-01.tres" type="Environment" id=6]
+[ext_resource path="res://Art/Menus/Logo_TOOB-01.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/Menus/Logo_TOOB-02.tscn" type="PackedScene" id=8]
 
 [node name="Spatial" type="Spatial"]
 
@@ -25,9 +27,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 199.449 )
 
 [node name="LD50-Bonus-Builder-01" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86324, 3.16595, 20.837 )
+visible = false
 
 [node name="LD50-Bonus-Builder-02" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2743, 3.16595, 83.1844 )
+visible = false
 
 [node name="LD50-Obstacle-Tower-Four-01" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.464 )
@@ -39,3 +43,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8791 )
 transform = Transform( -1, 1.83084e-09, -8.74036e-08, 0, 0.999781, 0.0209424, 8.74228e-08, 0.0209424, -0.999781, 0, 4.93305, 1.20464 )
 environment = ExtResource( 6 )
 far = 500.0
+
+[node name="Logo_TOOB-01" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.782055, 9.76735, 22.0585 )
+
+[node name="Logo_TOOB-02" parent="." instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.782055, 4.89933, 22.0585 )
