@@ -23,6 +23,8 @@ onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var graph : Spatial = $Graph
 onready var animation_tree : AnimationTree = $AnimationTree
 onready var top_text : TopText = $TopText
+onready var explosion : Particles = $Explosion
+onready var trail : Particles = $Graph/Trail
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -48,6 +50,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	trail.process_material.set("scale", lerp(0.2, 0.4, t_speed))
+	trail.emitting = is_moving
 	if not is_moving:
 		return
 	
@@ -61,8 +65,6 @@ func _process(delta: float) -> void:
 	var t_max := 0.5 if t_speed <= 0.5 and acceleration_target == 0 else 1.0
 	t_speed = clamp(t_speed, t_min, t_max)
 	speed = -lerp(min_speed, max_speed, acceleration.interpolate(t_speed))
-	if speed == 0:
-		print("BOOM")
 	
 	# STEERING
 	var current_steer_dir := sign(steer) if steer != 0 else 0.0
@@ -108,10 +110,9 @@ func update_animation(delta : float) -> void:
 func _on_HitBox_area_entered(_area: Area) -> void:
 	is_moving = false
 	$Graph.visible = false
-	var particles : Particles = $Particles
-	particles.emitting = true
+	explosion.emitting = true
 	
-	yield(get_tree().create_timer(particles.lifetime + 0.5), "timeout")
+	yield(get_tree().create_timer(explosion.lifetime + 0.5), "timeout")
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/GameOverScreen.tscn")

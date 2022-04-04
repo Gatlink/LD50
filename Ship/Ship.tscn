@@ -1,14 +1,29 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
 [ext_resource path="res://HUD/TopText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ship/particle_mat.tres" type="SphereMesh" id=4]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 5.49399e-07, 0, 0, Vector2( 0.5, 0.5 ), 2.03636, 2.03636, 0, 0, Vector2( 1, 1 ), 0.19867, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=24]
+_data = [ Vector2( 0, 1 ), 0.0, -0.619529, 0, 0, Vector2( 1, 0 ), -0.43367, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=25]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+direction = Vector3( 0, 0, -1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+scale = 0.3
+scale_curve = SubResource( 25 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.6, 0.1, 0.35 )
@@ -35,24 +50,12 @@ lifetime_randomness = 0.2
 direction = Vector3( 0, 1, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 5.0
+initial_velocity = 10.0
 initial_velocity_random = 0.2
 scale_random = 0.4
 scale_curve = SubResource( 10 )
 color = Color( 0.968627, 1, 0, 1 )
 color_ramp = SubResource( 8 )
-
-[sub_resource type="SpatialMaterial" id=13]
-params_blend_mode = 1
-albedo_color = Color( 0.929412, 1, 0, 1 )
-emission_enabled = true
-emission = Color( 1, 0.87451, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=12]
-material = SubResource( 13 )
 
 [sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Brake"
@@ -137,6 +140,15 @@ transform = Transform( 0.866094, -0.340686, 0.365807, 0.363197, 0.93168, 0.00778
 [node name="Engine-WIng-R-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="7"]
 transform = Transform( 0.872222, -0.334815, -0.35655, 0.358368, 0.93358, -1.2666e-07, 0.332868, -0.127776, 0.934276, -0.0538645, 0.0769283, -0.022598 )
 
+[node name="Trail" type="Particles" parent="Graph"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.122893, 1.81926 )
+emitting = false
+amount = 2000
+lifetime = 0.05
+local_coords = false
+process_material = SubResource( 26 )
+draw_pass_1 = ExtResource( 4 )
+
 [node name="Rays" type="Spatial" parent="."]
 
 [node name="GroundRayMid" type="RayCast" parent="Rays"]
@@ -162,15 +174,17 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.418648 )
 shape = SubResource( 5 )
 
-[node name="Particles" type="Particles" parent="."]
+[node name="Explosion" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56373, 0 )
+cast_shadow = 0
 emitting = false
-amount = 20
-lifetime = 0.6
+amount = 40
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
+local_coords = false
 process_material = SubResource( 11 )
-draw_pass_1 = SubResource( 12 )
+draw_pass_1 = ExtResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 17 )
