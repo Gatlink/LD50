@@ -5,6 +5,8 @@ export (Array, PackedScene) var chunk_scenes : Array
 
 
 onready var chunks_parent := $Chunks
+onready var music : AudioStreamPlayer = $Music
+onready var tween : Tween = $Tween
 
 
 var chunks : Array
@@ -39,3 +41,8 @@ func init_chunk(chunk : Chunk) -> void:
 	chunks.append(chunk)
 # warning-ignore:return_value_discarded
 	chunk.connect("screen_exited", self, "on_chunk_screen_exited")
+
+
+func _on_Ship_crashed() -> void:
+	tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1, Tween.TRANS_CUBIC, Tween.EASE_IN)
+	tween.start()

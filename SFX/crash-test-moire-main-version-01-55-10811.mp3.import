@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crash-test-moire-main-version-01-55-10811.mp3-d7a550295334784f97cb2945c78e2389.mp3str"
+
+[deps]
+
+source_file="res://SFX/crash-test-moire-main-version-01-55-10811.mp3"
+dest_files=[ "res://.import/crash-test-moire-main-version-01-55-10811.mp3-d7a550295334784f97cb2945c78e2389.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -111,9 +111,9 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -122.0
+margin_left = 390.0
 margin_top = -200.0
-margin_right = 122.0
+margin_right = 634.0
 margin_bottom = -4.0
 rect_pivot_offset = Vector2( 122, 0 )
 custom_colors/font_color = Color( 0.223529, 0.211765, 0.211765, 1 )
@@ -128,5 +128,6 @@ anims/Show = SubResource( 3 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

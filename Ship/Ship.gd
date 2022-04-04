@@ -2,6 +2,9 @@ class_name Ship
 extends Spatial
 
 
+signal crashed
+
+
 export (float) var min_speed := 35.0
 export (float) var max_speed := 100.0
 export (float) var acceleration_time := 2.0
@@ -113,6 +116,7 @@ func update_animation(delta : float) -> void:
 
 
 func _on_HitBox_area_entered(_area: Area) -> void:
+	emit_signal("crashed")
 	is_moving = false
 	sfx_engine.playing = false
 	sfx_explosion.playing = true
