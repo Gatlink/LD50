@@ -25,6 +25,7 @@ onready var animation_tree : AnimationTree = $AnimationTree
 onready var top_text : TopText = $TopText
 onready var explosion : Particles = $Explosion
 onready var trail : Particles = $Graph/Trail
+onready var sfx_engine : AudioStreamPlayer = $Engine
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -85,6 +86,9 @@ func _process(delta: float) -> void:
 	global_transform.origin = ground_position + velocity
 	
 	update_animation(delta)
+	
+	# SFX
+	sfx_engine.pitch_scale = lerp(0.2, 1.5, t_speed)
 
 
 func _physics_process(_delta: float) -> void:
@@ -109,6 +113,7 @@ func update_animation(delta : float) -> void:
 
 func _on_HitBox_area_entered(_area: Area) -> void:
 	is_moving = false
+	sfx_engine.playing = false
 	$Graph.visible = false
 	explosion.emitting = true
 	
@@ -121,6 +126,7 @@ func _on_HitBox_area_entered(_area: Area) -> void:
 func _on_TopText_done() -> void:
 	if countdown <= 0:
 		is_moving = true
+		sfx_engine.playing = true
 		return
 	
 	countdown -= 1
