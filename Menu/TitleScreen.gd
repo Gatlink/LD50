@@ -14,6 +14,8 @@ onready var fade_timer : Timer = $FadeTimer
 onready var play_button : Button = $Buttons/PlayButton
 onready var quit_button : Button = $Buttons/QuitButton
 onready var hide_color : Color = fader.color
+onready var keyboard_input : Array = get_tree().get_nodes_in_group("Keyboard")
+onready var gamepad_input : Array = get_tree().get_nodes_in_group("Gamepad")
 
 
 var transparent : Color
@@ -24,6 +26,23 @@ var video_index := 0
 func _input(event: InputEvent) -> void:
 	if (event.is_action("ui_down") or event.is_action("ui_up")) and quit_button.get_focus_owner() == null:
 		quit_button.grab_focus()
+	
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		hide_input(keyboard_input)
+		show_input(gamepad_input)
+	elif event is InputEventKey:
+		hide_input(gamepad_input)
+		show_input(keyboard_input)
+
+
+func show_input(inputs : Array) -> void:
+	for input in inputs:
+		input.visible = true
+
+
+func hide_input(inputs : Array) -> void:
+	for input in inputs:
+		input.visible = false
 
 
 func _ready() -> void:

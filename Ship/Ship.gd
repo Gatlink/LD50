@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		return
 	
 	# SPEED
-	var acceleration_target := Input.get_action_strength("accelerate") - Input.get_action_strength("brake")
+	var acceleration_target := Input.get_axis("brake", "accelerate")
 	var dir := sign(acceleration_target) if acceleration_target != 0 else -sign(t_speed - 0.5)
 	if dir == 0:
 		dir = 1
@@ -53,10 +53,12 @@ func _process(delta: float) -> void:
 	var t_max := 0.5 if t_speed <= 0.5 and acceleration_target == 0 else 1.0
 	t_speed = clamp(t_speed, t_min, t_max)
 	speed = -lerp(min_speed, max_speed, acceleration.interpolate(t_speed))
+	if speed == 0:
+		print("BOOM")
 	
 	# STEERING
 	var current_steer_dir := sign(steer) if steer != 0 else 0.0
-	var steer_dir := Input.get_action_strength("steer_left") - Input.get_action_strength("steer_right")
+	var steer_dir := Input.get_axis("steer_right", "steer_left")
 	var is_steering := steer_dir != 0 and (steer_dir == current_steer_dir or current_steer_dir == 0)
 	t_steer = clamp(t_steer + delta / (steering_time if is_steering else -steer_back_time), 0, 1)
 	steer = steering.interpolate(t_steer) * deg2rad(max_angle) * (steer_dir if is_steering else current_steer_dir)

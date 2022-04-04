@@ -1,26 +1,43 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
 [ext_resource path="res://Menu/MenuTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Art/Menus/Menu_BG-Video-02.webm" type="VideoStream" id=4]
 [ext_resource path="res://tilemap.png" type="Texture" id=5]
+[ext_resource path="res://MarvinVisionsBig-Bold.otf" type="DynamicFontData" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
 region = Rect2( 307, 35, 13, 14 )
 
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 239, 272, 13, 16 )
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 324, 69, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 1, 307, 14, 14 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
 region = Rect2( 511, 69, 13, 14 )
 
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 222, 272, 13, 16 )
+
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 5 )
 region = Rect2( 545, 69, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 18, 307, 14, 14 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
@@ -30,9 +47,17 @@ region = Rect2( 307, 52, 13, 14 )
 atlas = ExtResource( 5 )
 region = Rect2( 341, 52, 13, 14 )
 
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 221, 104, 16, 14 )
+
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
 region = Rect2( 290, 35, 13, 14 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 85, 51, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 5 )
@@ -41,6 +66,11 @@ region = Rect2( 562, 69, 13, 14 )
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 5 )
 region = Rect2( 528, 69, 13, 14 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 142
+extra_spacing_char = 24
+font_data = ExtResource( 6 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -74,9 +104,9 @@ custom_constants/separation = 10
 alignment = 2
 
 [node name="PlayButton" type="Button" parent="Buttons"]
-margin_top = 404.0
+margin_top = 414.0
 margin_right = 150.0
-margin_bottom = 472.0
+margin_bottom = 477.0
 focus_neighbour_top = NodePath("../QuitButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
@@ -86,7 +116,7 @@ text = "Play"
 align = 2
 
 [node name="QuitButton" type="Button" parent="Buttons"]
-margin_top = 482.0
+margin_top = 487.0
 margin_right = 150.0
 margin_bottom = 550.0
 focus_neighbour_top = NodePath("../PlayButton")
@@ -104,168 +134,230 @@ margin_bottom = -50.0
 alignment = 2
 
 [node name="Accelerate" type="HBoxContainer" parent="Controls"]
-margin_top = 452.0
-margin_right = 391.0
-margin_bottom = 482.0
+margin_top = 446.0
+margin_right = 377.0
+margin_bottom = 478.0
 alignment = 2
 
-[node name="W" type="TextureRect" parent="Controls/Accelerate"]
+[node name="W" type="TextureRect" parent="Controls/Accelerate" groups=["Keyboard"]]
 margin_left = 102.0
 margin_right = 132.0
-margin_bottom = 30.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 1 )
 stretch_mode = 6
 
+[node name="RT" type="TextureRect" parent="Controls/Accelerate" groups=["Gamepad"]]
+visible = false
+margin_left = 136.0
+margin_right = 166.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 11 )
+stretch_mode = 6
+
 [node name="Slash2" type="Label" parent="Controls/Accelerate"]
 margin_left = 136.0
-margin_right = 143.0
-margin_bottom = 30.0
+margin_right = 136.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Z" type="TextureRect" parent="Controls/Accelerate"]
-margin_left = 147.0
-margin_right = 177.0
-margin_bottom = 30.0
+[node name="Z" type="TextureRect" parent="Controls/Accelerate" groups=["Keyboard"]]
+margin_left = 140.0
+margin_right = 170.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 2 )
 stretch_mode = 6
 
-[node name="Slash" type="Label" parent="Controls/Accelerate"]
-margin_left = 181.0
-margin_right = 188.0
+[node name="A" type="TextureRect" parent="Controls/Accelerate" groups=["Gamepad"]]
+visible = false
+margin_left = 215.0
+margin_right = 245.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 12 )
+stretch_mode = 6
+
+[node name="Slash" type="Label" parent="Controls/Accelerate" groups=["Keyboard"]]
+margin_left = 174.0
+margin_right = 174.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Up" type="TextureRect" parent="Controls/Accelerate"]
-margin_left = 192.0
-margin_right = 222.0
-margin_bottom = 30.0
+[node name="Up" type="TextureRect" parent="Controls/Accelerate" groups=["Keyboard"]]
+margin_left = 178.0
+margin_right = 208.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 3 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Controls/Accelerate"]
-margin_left = 226.0
-margin_right = 391.0
-margin_bottom = 30.0
+margin_left = 212.0
+margin_right = 377.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Accelerate"
 
 [node name="Brake" type="HBoxContainer" parent="Controls"]
-margin_top = 486.0
-margin_right = 391.0
-margin_bottom = 516.0
+margin_top = 482.0
+margin_right = 377.0
+margin_bottom = 514.0
 alignment = 2
 
-[node name="S" type="TextureRect" parent="Controls/Brake"]
-margin_left = 147.0
-margin_right = 177.0
-margin_bottom = 30.0
+[node name="S" type="TextureRect" parent="Controls/Brake" groups=["Keyboard"]]
+margin_left = 140.0
+margin_right = 170.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 1 )
 stretch_mode = 6
 
-[node name="Slash" type="Label" parent="Controls/Brake"]
+[node name="LT" type="TextureRect" parent="Controls/Brake" groups=["Gamepad"]]
+visible = false
 margin_left = 181.0
-margin_right = 188.0
+margin_right = 211.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 13 )
+stretch_mode = 6
+
+[node name="Slash" type="Label" parent="Controls/Brake"]
+margin_left = 174.0
+margin_right = 174.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Down" type="TextureRect" parent="Controls/Brake"]
-margin_left = 192.0
-margin_right = 222.0
-margin_bottom = 30.0
+[node name="Down" type="TextureRect" parent="Controls/Brake" groups=["Keyboard"]]
+margin_left = 178.0
+margin_right = 208.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 7 )
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Controls/Brake"]
-margin_left = 226.0
-margin_right = 391.0
+[node name="B" type="TextureRect" parent="Controls/Brake" groups=["Gamepad"]]
+visible = false
+margin_left = 260.0
+margin_right = 290.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 14 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Controls/Brake"]
+margin_left = 212.0
+margin_right = 377.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Brake"
 
 [node name="Turn" type="HBoxContainer" parent="Controls"]
-margin_top = 520.0
-margin_right = 391.0
+margin_top = 518.0
+margin_right = 377.0
 margin_bottom = 550.0
 alignment = 2
 
-[node name="A" type="TextureRect" parent="Controls/Turn"]
+[node name="A" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
 margin_right = 30.0
-margin_bottom = 30.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 4 )
 stretch_mode = 6
 
-[node name="D" type="TextureRect" parent="Controls/Turn"]
+[node name="D" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
 margin_left = 34.0
 margin_right = 64.0
-margin_bottom = 30.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 5 )
+stretch_mode = 6
+
+[node name="LeftStick" type="TextureRect" parent="Controls/Turn" groups=["Gamepad"]]
+visible = false
+margin_left = 68.0
+margin_right = 98.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 15 )
 stretch_mode = 6
 
 [node name="Slash" type="Label" parent="Controls/Turn"]
 margin_left = 68.0
-margin_right = 75.0
-margin_bottom = 30.0
+margin_right = 68.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Q" type="TextureRect" parent="Controls/Turn"]
-margin_left = 79.0
-margin_right = 109.0
-margin_bottom = 30.0
+[node name="Q" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
+margin_left = 72.0
+margin_right = 102.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 6 )
 stretch_mode = 6
 
-[node name="D2" type="TextureRect" parent="Controls/Turn"]
-margin_left = 113.0
-margin_right = 143.0
-margin_bottom = 30.0
+[node name="D2" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
+margin_left = 106.0
+margin_right = 136.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 5 )
 stretch_mode = 6
 
-[node name="Slash2" type="Label" parent="Controls/Turn"]
-margin_left = 147.0
-margin_right = 154.0
+[node name="DPad" type="TextureRect" parent="Controls/Turn" groups=["Gamepad"]]
+visible = false
+margin_left = 181.0
+margin_right = 211.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+texture = SubResource( 16 )
+stretch_mode = 6
+
+[node name="Slash2" type="Label" parent="Controls/Turn" groups=["Keyboard"]]
+margin_left = 140.0
+margin_right = 140.0
+margin_bottom = 32.0
 theme = ExtResource( 3 )
 text = "/"
 
-[node name="Left" type="TextureRect" parent="Controls/Turn"]
-margin_left = 158.0
-margin_right = 188.0
-margin_bottom = 30.0
+[node name="Left" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
+margin_left = 144.0
+margin_right = 174.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 9 )
 stretch_mode = 6
 
-[node name="Right" type="TextureRect" parent="Controls/Turn"]
-margin_left = 192.0
-margin_right = 222.0
-margin_bottom = 30.0
+[node name="Right" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
+margin_left = 178.0
+margin_right = 208.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 10 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Controls/Turn"]
-margin_left = 226.0
-margin_right = 391.0
-margin_bottom = 30.0
+margin_left = 212.0
+margin_right = 377.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Turn"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 17 )
+text = "T00B"
 
 [connection signal="timeout" from="FadeTimer" to="." method="_on_Timer_timeout"]
 [connection signal="focus_entered" from="Buttons/PlayButton" to="." method="_on_button_focus_entered"]

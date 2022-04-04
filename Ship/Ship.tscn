@@ -107,31 +107,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0 )
 
 [node name="Brake_Handle-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-L-01" index="0"]
-transform = Transform( 0.580949, 0.81394, 0, 8.9407e-08, -1.19209e-07, 1, 0.81394, -0.580949, -1.19209e-07, -1.01631e-08, 0.0355565, -5.25677e-09 )
+transform = Transform( 0.580949, 0.81394, -2.98023e-08, 2.98023e-08, 5.96046e-08, 1, 0.81394, -0.580949, 0, -1.01631e-08, 0.0355565, -5.25677e-09 )
 
 [node name="Brake_Handle-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-R-01" index="0"]
-transform = Transform( 0.709482, 0.704723, -5.96046e-08, -1.19209e-07, 0, -1, -0.704723, 0.709482, 5.96046e-08, 1.98766e-09, 0.0347652, -1.48345e-09 )
+transform = Transform( 0.709482, 0.704723, -8.9407e-08, -8.9407e-08, 0, -1, -0.704723, 0.709482, 0, 1.98766e-09, 0.0347652, -1.48345e-09 )
 
 [node name="Engine-WIng-L-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="0"]
-transform = Transform( 0.93435, -0.101223, 0.344265, 6.70552e-08, 1.06247, 0.258277, -0.356356, -0.265401, 0.902649, 0.0222666, 0.0769282, 0.0542539 )
+transform = Transform( 0.93435, -0.101223, 0.344265, 7.07805e-08, 1.06247, 0.258276, -0.356356, -0.265401, 0.902649, 0.0222666, 0.0769282, 0.0542539 )
 
 [node name="Engine-WIng-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="1"]
 transform = Transform( 0.89898, -0.26659, -0.364797, 0.263279, 1.06095, 0.0077851, 0.350028, -0.113324, 0.931055, 0.0543271, 0.0769283, 0.023064 )
 
 [node name="Engine-WIng-L-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="2"]
-transform = Transform( 0.890538, -0.261841, 0.387631, 0.258277, 1.06247, -1.15484e-07, -0.374479, 0.110106, 0.921815, 0.0548261, 0.0769283, -0.022598 )
+transform = Transform( 0.890538, -0.26184, 0.387631, 0.258277, 1.06247, -1.11759e-07, -0.374479, 0.110106, 0.921815, 0.0548261, 0.0769283, -0.022598 )
 
 [node name="Engine-WIng-L-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="3"]
-transform = Transform( 0.924238, -0.108455, -0.368862, -6.33299e-08, 1.06247, -0.258277, 0.381817, 0.262529, 0.89288, 0.0222666, 0.0769283, -0.0547112 )
+transform = Transform( 0.924238, -0.108455, -0.368862, -5.96046e-08, 1.06247, -0.258277, 0.381817, 0.262529, 0.89288, 0.0222666, 0.0769283, -0.0547112 )
 
 [node name="Engine-WIng-R-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="4"]
-transform = Transform( 0.916952, 0.113335, -0.385461, -8.9407e-08, 1.06247, 0.258277, 0.398998, -0.260459, 0.88584, -0.0222133, 0.0769282, 0.0542539 )
+transform = Transform( 0.916952, 0.113335, -0.385461, -9.68575e-08, 1.06247, 0.258276, 0.398998, -0.260459, 0.88584, -0.0222133, 0.0769282, 0.0542539 )
 
 [node name="Engine-WIng-R-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="5"]
-transform = Transform( 0.934026, 0.101464, 0.345085, 7.45058e-08, 1.06247, -0.258277, -0.357205, 0.265309, 0.902336, -0.0222133, 0.0769283, -0.0547112 )
+transform = Transform( 0.934026, 0.101464, 0.345085, 8.19564e-08, 1.06247, -0.258277, -0.357205, 0.265309, 0.902336, -0.0222133, 0.0769283, -0.0547112 )
 
 [node name="Engine-WIng-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="6"]
-transform = Transform( 0.901066, 0.256195, 0.365807, -0.253252, 1.0639, 0.00778512, -0.352057, -0.1096, 0.930658, -0.0543635, 0.0769283, 0.023064 )
+transform = Transform( 0.901066, 0.256195, 0.365807, -0.253252, 1.0639, 0.00778511, -0.352057, -0.1096, 0.930658, -0.0543635, 0.0769283, 0.023064 )
 
 [node name="Engine-WIng-R-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="7"]
 transform = Transform( 0.902577, 0.26538, -0.35655, -0.258277, 1.06247, -1.19209e-07, 0.344453, 0.101278, 0.934276, -0.0538645, 0.0769283, -0.022598 )
@@ -139,9 +139,9 @@ transform = Transform( 0.902577, 0.26538, -0.35655, -0.258277, 1.06247, -1.19209
 [node name="Rays" type="Spatial" parent="."]
 
 [node name="GroundRayMid" type="RayCast" parent="Rays"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
 enabled = true
-cast_to = Vector3( 0, -5, 0 )
+cast_to = Vector3( 0, -10, 0 )
 collision_mask = 2
 
 [node name="HitBox" type="Area" parent="."]
