@@ -7,6 +7,7 @@ export (Array, PackedScene) var chunk_scenes : Array
 onready var chunks_parent := $Chunks
 onready var music : AudioStreamPlayer = $Music
 onready var tween : Tween = $Tween
+onready var blocker : Spatial = $Blocker
 
 
 var chunks : Array
@@ -35,6 +36,7 @@ func on_chunk_screen_exited(chunk : Chunk) -> void:
 	new_chunk.global_transform.basis = end_pos.global_transform.basis
 	init_chunk(new_chunk)
 	
+	blocker.global_transform = chunks[0].global_transform
 
 
 func init_chunk(chunk : Chunk) -> void:
