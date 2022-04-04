@@ -149,6 +149,12 @@ func _on_HitBox_area_entered(area: Area) -> void:
 	
 	var seconds := int(elapsed_time)
 	var save : File = File.new()
+	
+	if not save.file_exists("user://user.save"):
+# warning-ignore:return_value_discarded
+		save.open("user://user.save", File.WRITE)
+		save.close()
+	
 # warning-ignore:return_value_discarded
 	save.open("user://user.save", File.READ_WRITE)
 	save.seek_end()

@@ -19,15 +19,18 @@ func _ready() -> void:
 	while save.get_position() < save.get_len():
 		var line := save.get_line()
 		infos = line.split("|")
+		if infos.size() < 5:
+			continue
 		
 		var current := int(infos[4])
 		if current > best:
 			best = current
 	
-	time_label.text = infos[0]
-	time_value.text = "+" + infos[1]
-	distance_value.text = "+" + infos[2]
-	bonus_value.text = "+" + infos[3]
-	total_value.text = infos[4]
-	best_value.text = str(best)
+	if infos.size() >= 5:
+		time_label.text = infos[0]
+		time_value.text = "+" + infos[1]
+		distance_value.text = "+" + infos[2]
+		bonus_value.text = "+" + infos[3]
+		total_value.text = infos[4]
+		best_value.text = str(best)
 	

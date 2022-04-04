@@ -43,6 +43,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300 )
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
+min_speed = 70.0
+max_speed = 200.0
+max_angle = 1.0
 
 [node name="CameraPath" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999999, -0.0014336, 0, 0.0014336, 0.999999, 0, 0, 0 )

@@ -1,9 +1,13 @@
 [gd_resource type="SphereMesh" load_steps=2 format=2]
 
 [sub_resource type="SpatialMaterial" id=27]
-flags_unshaded = true
 params_blend_mode = 1
-albedo_color = Color( 0.757167, 0.77, 0.385, 1 )
+albedo_color = Color( 0.756863, 0.768627, 0.384314, 1 )
+emission_enabled = true
+emission = Color( 0.756863, 0.768627, 0.384314, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [resource]
 material = SubResource( 27 )
