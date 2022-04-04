@@ -134,4 +134,9 @@ size_flags_horizontal = 5
 texture = ExtResource( 12 )
 stretch_mode = 6
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="crashed" from="Ship" to="." method="_on_Ship_crashed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

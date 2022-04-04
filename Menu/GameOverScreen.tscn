@@ -70,7 +70,7 @@ shortcut = SubResource( 6 )
 [node name="Controls" parent="." index="6"]
 visible = false
 
-[node name="Reload" type="HBoxContainer" parent="." index="10"]
+[node name="Reload" type="HBoxContainer" parent="." index="7"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -105,9 +105,10 @@ theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
 text = "Quick reload"
 
-[node name="Credits" type="VBoxContainer" parent="." index="11"]
+[node name="Credits" type="VBoxContainer" parent="." index="8"]
 anchor_bottom = 1.0
 margin_left = 25.0
+margin_right = 273.0
 margin_bottom = -50.0
 alignment = 2
 
@@ -162,11 +163,11 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Recap" type="VBoxContainer" parent="." index="13"]
+[node name="Recap" type="VBoxContainer" parent="." index="9"]
 margin_left = 100.0
 margin_top = 30.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 442.0
+margin_bottom = 432.0
 custom_constants/separation = 15
 script = ExtResource( 4 )
 

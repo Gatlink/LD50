@@ -64,6 +64,5 @@ spot_angle_attenuation = 1060.11
 
 [node name="ScoreGate" parent="." instance=ExtResource( 7 )]
 transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 5, 0, 15, -2.5 )
-type = "Gate"
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

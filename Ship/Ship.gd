@@ -21,6 +21,9 @@ export (float) var max_tilt := 30.0
 export (float) var max_yaw := 10.0
 export (float) var tilt_duration := 0.2
 
+export (int) var gate_points := 5
+export (int) var bonus_points := 10
+
 
 onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var graph : Spatial = $Graph
@@ -30,6 +33,8 @@ onready var explosion : Particles = $Explosion
 onready var trail : Particles = $Graph/Trail
 onready var sfx_engine : AudioStreamPlayer = $SFX_Engine
 onready var sfx_explosion : AudioStreamPlayer = $SFX_Explosion
+onready var sfx_bonus : AudioStreamPlayer = $SFX_Bonus
+onready var sfx_bonus_full : AudioStreamPlayer = $SFX_BonusFull
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -122,11 +127,17 @@ func update_animation(delta : float) -> void:
 
 func _on_HitBox_area_entered(area: Area) -> void:
 	var score_gate := area as ScoreGate
+	var score_mult := 2 if t_speed >= 1 else 1
 	if score_gate != null:
 		if score_gate.type == "Gate":
-			distance_score += score_gate.value
+			distance_score += gate_points * score_mult
 		else:
-			bonus_score += score_gate.value
+			bonus_score += bonus_points * score_mult
+			score_gate.collect()
+			if score_mult > 1:
+				sfx_bonus_full.play()
+			else:
+				sfx_bonus.play()
 		return
 	
 	emit_signal("crashed")

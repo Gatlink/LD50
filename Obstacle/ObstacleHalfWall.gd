@@ -1,4 +1,4 @@
-extends Spatial
+extends Obstacle
 
 
 export (float, 0, 1) var ad_probability : float = 0.5

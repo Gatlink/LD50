@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Ship/particle_mat.tres" type="SphereMesh" id=4]
 [ext_resource path="res://SFX/engine.wav" type="AudioStream" id=5]
 [ext_resource path="res://SFX/explosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://SFX/Ding-04.wav" type="AudioStream" id=7]
+[ext_resource path="res://SFX/Ding-01.wav" type="AudioStream" id=8]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 5.49399e-07, 0, 0, Vector2( 0.5, 0.5 ), 2.03636, 2.03636, 0, 0, Vector2( 1, 1 ), 0.19867, 0.0, 0, 0 ]
@@ -204,6 +206,14 @@ bus = "SFX"
 
 [node name="SFX_Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="SFX_Bonus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX"
+
+[node name="SFX_BonusFull" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 bus = "SFX"
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
