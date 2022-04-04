@@ -39,6 +39,10 @@ func highligh_label(label : Label, is_highlighted : bool) -> void:
 	label.add_color_override("font_color", Color("f0a422") if is_highlighted else Color.white)
 
 
+func _process(delta: float) -> void:
+	back_button.icon = back_selected if back_button.is_hovered() or back_button.has_focus() else back_normal
+
+
 func _on_SoundButton_pressed() -> void:
 	sound_animation.play("ShowSoundMenu")
 	main_slider.grab_focus()
@@ -49,12 +53,12 @@ func _on_Back_pressed() -> void:
 	play_button.grab_focus()
 
 
-func _on_Back_focus_entered() -> void:
-	back_button.icon = back_selected
-
-
-func _on_Back_focus_exited() -> void:
-	back_button.icon = back_normal
+#func _on_Back_focus_entered() -> void:
+#	back_button.icon = back_selected
+#
+#
+#func _on_Back_focus_exited() -> void:
+#	back_button.icon = back_normal
 
 
 func _on_main_focus_entered() -> void:

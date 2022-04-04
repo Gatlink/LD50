@@ -740,8 +740,6 @@ bus = "SFX"
 [connection signal="pressed" from="Buttons/SoundButton" to="." method="_on_SoundButton_pressed"]
 [connection signal="focus_entered" from="Buttons/QuitButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="focus_entered" from="SoundMenu/Tilte/Back" to="." method="_on_Back_focus_entered"]
-[connection signal="focus_exited" from="SoundMenu/Tilte/Back" to="." method="_on_Back_focus_exited"]
 [connection signal="pressed" from="SoundMenu/Tilte/Back" to="." method="_on_Back_pressed"]
 [connection signal="focus_entered" from="SoundMenu/Main/HSlider" to="." method="_on_main_focus_entered"]
 [connection signal="focus_exited" from="SoundMenu/Main/HSlider" to="." method="_on_main_focus_exited"]

@@ -33,14 +33,14 @@ font_data = ExtResource( 9 )
 [node name="GameOverScreen" instance=ExtResource( 1 )]
 rect_pivot_offset = Vector2( -544, 35 )
 
+[node name="Logo" parent="." index="4"]
+visible = false
+
 [node name="PlayButton" parent="Buttons" index="0"]
 shortcut = SubResource( 6 )
 
-[node name="Controls" parent="." index="5"]
+[node name="Controls" parent="." index="6"]
 visible = false
-
-[node name="SoundFader" parent="." index="7"]
-color = Color( 0.0784314, 0.00392157, 0.129412, 0 )
 
 [node name="Title" type="Label" parent="." index="10"]
 margin_left = 50.0
