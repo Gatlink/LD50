@@ -4,9 +4,8 @@
 [ext_resource path="res://HUD/TopText.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 102
-outline_size = 12
-outline_color = Color( 0, 0, 0, 1 )
+size = 162
+outline_size = 4
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
@@ -21,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 412, -200 ) ]
+"values": [ Vector2( 390, -200 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:visible")
@@ -60,7 +59,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 412, -200 ), Vector2( 412, 25 ) ]
+"values": [ Vector2( 390, -200 ), Vector2( 390, 25 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Label:modulate")
@@ -86,11 +85,12 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 412.0
+margin_left = -122.0
 margin_top = -200.0
-margin_right = 612.0
-margin_bottom = -77.0
-rect_pivot_offset = Vector2( 100, 0 )
+margin_right = 122.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 122, 0 )
+custom_colors/font_color = Color( 0.223529, 0.211765, 0.211765, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "GO!"
 align = 1
