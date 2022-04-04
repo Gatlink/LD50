@@ -1,111 +1,100 @@
-extends Control
+extends "res://Menu/MenuScreen.gd"
 
 
-export (float) var fade_time : float = 2.0
-export (float) var video_duration : float = 10.0
-export (Array, Resource) var videos : Array
+const MAIN_BUS_NAME := "Master"
+const MUSIC_BUS_NAME := "Music"
+const EFFECTS_BUS_NAME := "SFX"
 
 
-onready var music := preload("res://SFX/vacation-collective-fe77a-main-version-02-52-3714.mp3")
-onready var focus_icon : Texture = preload("res://Art/Menus/selector.png")
-onready var video_player : VideoPlayer = $VideoPlayer
-onready var fader : ColorRect = $Fader
-onready var tween : Tween = $Tween
-onready var fade_timer : Timer = $FadeTimer
-onready var play_button : Button = $Buttons/PlayButton
-onready var quit_button : Button = $Buttons/QuitButton
-onready var hide_color : Color = fader.color
-onready var keyboard_input : Array = get_tree().get_nodes_in_group("Keyboard")
-onready var gamepad_input : Array = get_tree().get_nodes_in_group("Gamepad")
+onready var main_bus_id := AudioServer.get_bus_index(MAIN_BUS_NAME)
+onready var music_bus_id := AudioServer.get_bus_index(MUSIC_BUS_NAME)
+onready var effects_bus_id := AudioServer.get_bus_index(EFFECTS_BUS_NAME)
+
+onready var sound_animation : AnimationPlayer = $AnimationPlayer
+onready var back_button : Button = $SoundMenu/Tilte/Back
+onready var main_slider : HSlider = $SoundMenu/Main/HSlider
+onready var main_label : Label = $SoundMenu/Main/Label
+onready var music_slider : HSlider = $SoundMenu/Music/HSlider
+onready var music_label : Label = $SoundMenu/Music/Label
+onready var effects_slider : HSlider = $SoundMenu/Effects/HSlider
+onready var effects_label : Label = $SoundMenu/Effects/Label
+onready var sound_effect : AudioStreamPlayer = $AudioStreamPlayer
+
+onready var back_selected : Texture = preload("res://Art/Menus/backSelected.png")
+onready var back_normal : Texture = preload("res://Art/Menus/back.png")
 
 
-var transparent : Color
-var is_hidden := true
-var video_index := 0
-
-
-func _input(event: InputEvent) -> void:
-	if (event.is_action("ui_down") or event.is_action("ui_up")) and quit_button.get_focus_owner() == null:
-		quit_button.grab_focus()
-	
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		hide_input(keyboard_input)
-		show_input(gamepad_input)
-	elif event is InputEventKey:
-		hide_input(gamepad_input)
-		show_input(keyboard_input)
-
-
-func show_input(inputs : Array) -> void:
-	for input in inputs:
-		input.visible = true
-
-
-func hide_input(inputs : Array) -> void:
-	for input in inputs:
-		input.visible = false
+var can_play_sound : bool = false
 
 
 func _ready() -> void:
-	transparent = hide_color
-	transparent.a = 0
+	main_slider.value = db2linear(AudioServer.get_bus_volume_db(main_bus_id))
+	music_slider.value = db2linear(AudioServer.get_bus_volume_db(music_bus_id))
+	effects_slider.value = db2linear(AudioServer.get_bus_volume_db(effects_bus_id))
 	
-	var stream := AudioStreamPlayer.new()
-	stream.stream = music
-	stream.bus = "Music"
-	add_child(stream)
-	stream.play()
+	can_play_sound = true
 
 
-func _process(_delta: float) -> void:
-	if not video_player.is_playing():
-		play_video()
+func highligh_label(label : Label, is_highlighted : bool) -> void:
+	label.add_color_override("font_color", Color("f0a422") if is_highlighted else Color.white)
 
 
-func play_video() ->  void:
-	if videos.size() > 0:
-		video_player.stream = videos[video_index]
-		video_player.play()
-		_on_Timer_timeout()
-		video_index = (video_index + 1) % videos.size()
+func _on_SoundButton_pressed() -> void:
+	sound_animation.play("ShowSoundMenu")
+	main_slider.grab_focus()
 
 
-func fade_in() -> void:
-	is_hidden = false
-# warning-ignore:return_value_discarded
-	tween.interpolate_property(fader, "color", fader.color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_IN)
-# warning-ignore:return_value_discarded
-	tween.start()
+func _on_Back_pressed() -> void:
+	sound_animation.play("HideSoundMenu")
+	play_button.grab_focus()
 
 
-func fade_out() -> void:
-	is_hidden = true
-# warning-ignore:return_value_discarded
-	tween.interpolate_property(fader, "color", fader.color, hide_color, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
-# warning-ignore:return_value_discarded
-	tween.start()
+func _on_Back_focus_entered() -> void:
+	back_button.icon = back_selected
 
 
-func _on_PlayButton_pressed() -> void:
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Main.tscn")
+func _on_Back_focus_exited() -> void:
+	back_button.icon = back_normal
 
 
-func _on_QuitButton_pressed() -> void:
-	pass
-	get_tree().quit()
+func _on_main_focus_entered() -> void:
+	highligh_label(main_label, true)
 
 
-func _on_Timer_timeout() -> void:
-# warning-ignore:return_value_discarded
-	tween.stop_all()
-	if is_hidden:
-		fade_in()
-		fade_timer.start(video_duration - fade_time)
-	else:
-		fade_out()
+func _on_main_focus_exited() -> void:
+	highligh_label(main_label, false)
 
 
-func _on_button_focus_entered() -> void:
-	play_button.icon = focus_icon if play_button.has_focus() else null
-	quit_button.icon = focus_icon if quit_button.has_focus() else null
+func _on_music_focus_entered() -> void:
+	highligh_label(music_label, true)
+
+
+func _on_music_focus_exited() -> void:
+	highligh_label(music_label, false)
+
+
+func _on_effects_focus_entered() -> void:
+	highligh_label(effects_label, true)
+
+
+func _on_effects_focus_exited() -> void:
+	highligh_label(effects_label, false)
+
+
+func _on_main_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(main_bus_id, linear2db(value))
+
+
+func _on_music_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(music_bus_id, linear2db(value))
+
+
+func _on_effects_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(effects_bus_id, linear2db(value))
+	if can_play_sound:
+		can_play_sound = false
+		sound_effect.play()
+
+
+func _on_sound_finished() -> void:
+	can_play_sound = true
