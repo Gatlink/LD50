@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -11,6 +11,39 @@
 [ext_resource path="res://Menu/SoundMenuTheme.tres" type="Theme" id=9]
 [ext_resource path="res://SFX/countdown.wav" type="AudioStream" id=10]
 [ext_resource path="res://Art/Menus/Logo_TOOB-01.png" type="Texture" id=11]
+[ext_resource path="res://Menu/PlayOnStart.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "glow"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.439216 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -264,6 +297,11 @@ margin_bottom = 254.0
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
+anims/RESET = SubResource( 23 )
+anims/glow = SubResource( 24 )
+script = ExtResource( 12 )
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 anchor_left = 1.0
