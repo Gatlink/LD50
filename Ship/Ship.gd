@@ -47,6 +47,8 @@ var tilt : float
 var t_tilt : float
 
 var countdown : int
+var score : int
+var elapsed_time : float
 
 
 func _ready() -> void:
@@ -59,6 +61,8 @@ func _process(delta: float) -> void:
 	trail.emitting = is_moving
 	if not is_moving:
 		return
+	
+	elapsed_time += delta
 	
 	# SPEED
 	var acceleration_target := Input.get_axis("brake", "accelerate")
@@ -115,13 +119,32 @@ func update_animation(delta : float) -> void:
 	animation_tree.set("parameters/Acceleration/blend_position", t_speed)
 
 
-func _on_HitBox_area_entered(_area: Area) -> void:
+func _on_HitBox_area_entered(area: Area) -> void:
+	var score_gate := area as ScoreGate
+	if score_gate != null:
+		score += score_gate.value
+		return
+	
 	emit_signal("crashed")
 	is_moving = false
 	sfx_engine.playing = false
 	sfx_explosion.playing = true
 	$Graph.visible = false
 	explosion.emitting = true
+	
+	var seconds := int(elapsed_time)
+	var save : File = File.new()
+# warning-ignore:return_value_discarded
+	save.open("user://user.save", File.WRITE)
+	save.seek_end()
+	save.store_line("%02d:%02d.%02d|%d" % [
+# warning-ignore:integer_division
+		seconds / 60,
+		seconds % 60,
+		(elapsed_time - seconds) * 100,
+		score
+	])
+	save.close()
 	
 	yield(sfx_explosion, "finished")
 	
