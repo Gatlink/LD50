@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -14,6 +14,10 @@ region = Rect2( 307, 35, 13, 14 )
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 5 )
 region = Rect2( 239, 272, 13, 16 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 26
+font_data = ExtResource( 6 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
@@ -135,7 +139,7 @@ alignment = 2
 
 [node name="Accelerate" type="HBoxContainer" parent="Controls"]
 margin_top = 446.0
-margin_right = 377.0
+margin_right = 393.0
 margin_bottom = 478.0
 alignment = 2
 
@@ -158,14 +162,15 @@ stretch_mode = 6
 
 [node name="Slash2" type="Label" parent="Controls/Accelerate"]
 margin_left = 136.0
-margin_right = 136.0
+margin_right = 144.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "/"
 
 [node name="Z" type="TextureRect" parent="Controls/Accelerate" groups=["Keyboard"]]
-margin_left = 140.0
-margin_right = 170.0
+margin_left = 148.0
+margin_right = 178.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 2 )
@@ -181,23 +186,24 @@ texture = SubResource( 12 )
 stretch_mode = 6
 
 [node name="Slash" type="Label" parent="Controls/Accelerate" groups=["Keyboard"]]
-margin_left = 174.0
-margin_right = 174.0
+margin_left = 182.0
+margin_right = 190.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "/"
 
 [node name="Up" type="TextureRect" parent="Controls/Accelerate" groups=["Keyboard"]]
-margin_left = 178.0
-margin_right = 208.0
+margin_left = 194.0
+margin_right = 224.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 3 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Controls/Accelerate"]
-margin_left = 212.0
-margin_right = 377.0
+margin_left = 228.0
+margin_right = 393.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
@@ -205,13 +211,13 @@ text = ": Accelerate"
 
 [node name="Brake" type="HBoxContainer" parent="Controls"]
 margin_top = 482.0
-margin_right = 377.0
+margin_right = 393.0
 margin_bottom = 514.0
 alignment = 2
 
 [node name="S" type="TextureRect" parent="Controls/Brake" groups=["Keyboard"]]
-margin_left = 140.0
-margin_right = 170.0
+margin_left = 148.0
+margin_right = 178.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 1 )
@@ -227,15 +233,16 @@ texture = SubResource( 13 )
 stretch_mode = 6
 
 [node name="Slash" type="Label" parent="Controls/Brake"]
-margin_left = 174.0
-margin_right = 174.0
+margin_left = 182.0
+margin_right = 190.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "/"
 
 [node name="Down" type="TextureRect" parent="Controls/Brake" groups=["Keyboard"]]
-margin_left = 178.0
-margin_right = 208.0
+margin_left = 194.0
+margin_right = 224.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 7 )
@@ -251,8 +258,8 @@ texture = SubResource( 14 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Controls/Brake"]
-margin_left = 212.0
-margin_right = 377.0
+margin_left = 228.0
+margin_right = 393.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
@@ -260,7 +267,7 @@ text = ": Brake"
 
 [node name="Turn" type="HBoxContainer" parent="Controls"]
 margin_top = 518.0
-margin_right = 377.0
+margin_right = 393.0
 margin_bottom = 550.0
 alignment = 2
 
@@ -290,22 +297,23 @@ stretch_mode = 6
 
 [node name="Slash" type="Label" parent="Controls/Turn"]
 margin_left = 68.0
-margin_right = 68.0
+margin_right = 76.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "/"
 
 [node name="Q" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
-margin_left = 72.0
-margin_right = 102.0
+margin_left = 80.0
+margin_right = 110.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 6 )
 stretch_mode = 6
 
 [node name="D2" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
-margin_left = 106.0
-margin_right = 136.0
+margin_left = 114.0
+margin_right = 144.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 5 )
@@ -321,31 +329,32 @@ texture = SubResource( 16 )
 stretch_mode = 6
 
 [node name="Slash2" type="Label" parent="Controls/Turn" groups=["Keyboard"]]
-margin_left = 140.0
-margin_right = 140.0
+margin_left = 148.0
+margin_right = 156.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 18 )
 text = "/"
 
 [node name="Left" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
-margin_left = 144.0
-margin_right = 174.0
+margin_left = 160.0
+margin_right = 190.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 9 )
 stretch_mode = 6
 
 [node name="Right" type="TextureRect" parent="Controls/Turn" groups=["Keyboard"]]
-margin_left = 178.0
-margin_right = 208.0
+margin_left = 194.0
+margin_right = 224.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 30, 0 )
 texture = SubResource( 10 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Controls/Turn"]
-margin_left = 212.0
-margin_right = 377.0
+margin_left = 228.0
+margin_right = 393.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
