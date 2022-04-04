@@ -132,4 +132,6 @@ func _on_TopText_done() -> void:
 		return
 	
 	countdown -= 1
+	if countdown == 0:
+		top_text.sfx.stream = load("res://SFX/countdown_final.wav")
 	top_text.call_deferred("display", str(countdown) if countdown > 0 else "Go!")

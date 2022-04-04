@@ -7,6 +7,7 @@ signal done
 
 onready var label : Label = $Label
 onready var animation : AnimationPlayer = $AnimationPlayer
+onready var sfx : AudioStreamPlayer = $SFX
 
 
 func display(text : String) -> void:
