@@ -74,23 +74,24 @@ margin_left = 25.0
 margin_bottom = -50.0
 alignment = 2
 
-[node name="Uriel" type="HBoxContainer" parent="Controls"]
+[node name="Fog" type="HBoxContainer" parent="Controls"]
 margin_top = 466.0
 margin_right = 248.0
 margin_bottom = 506.0
 custom_constants/separation = 10
 alignment = 2
 
-[node name="Label" type="Label" parent="Controls/Uriel"]
+[node name="Label" type="Label" parent="Controls/Fog"]
 margin_left = 33.0
 margin_top = 4.0
 margin_right = 198.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
-text = "Uriel Lacroix"
+text = "Fog Ryu"
+align = 2
 
-[node name="Icon" type="TextureRect" parent="Controls/Uriel"]
+[node name="Icon" type="TextureRect" parent="Controls/Fog"]
 margin_left = 208.0
 margin_right = 248.0
 margin_bottom = 40.0
@@ -113,6 +114,7 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = "Sebastien Gatty"
+align = 2
 
 [node name="Icon" type="TextureRect" parent="Controls/Seb"]
 margin_left = 208.0
