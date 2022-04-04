@@ -10,7 +10,7 @@ onready var main_bus_id := AudioServer.get_bus_index(MAIN_BUS_NAME)
 onready var music_bus_id := AudioServer.get_bus_index(MUSIC_BUS_NAME)
 onready var effects_bus_id := AudioServer.get_bus_index(EFFECTS_BUS_NAME)
 
-onready var sound_animation : AnimationPlayer = $AnimationPlayer
+onready var sound_animation : AnimationPlayer = $SoundMenuAnimation
 onready var back_button : Button = $SoundMenu/Tilte/Back
 onready var main_slider : HSlider = $SoundMenu/Main/HSlider
 onready var main_label : Label = $SoundMenu/Main/Label

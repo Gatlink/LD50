@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art/Menus/back.png" type="Texture" id=8]
 [ext_resource path="res://Menu/SoundMenuTheme.tres" type="Theme" id=9]
 [ext_resource path="res://SFX/countdown.wav" type="AudioStream" id=10]
+[ext_resource path="res://Art/Menus/Logo_TOOB-01.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -254,6 +255,15 @@ stream = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0784314, 0.00392157, 0.129412, 1 )
+
+[node name="Logo" type="TextureRect" parent="."]
+margin_left = -20.0
+margin_top = -50.0
+margin_right = 557.0
+margin_bottom = 254.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -536,7 +546,7 @@ rect_min_size = Vector2( 165, 0 )
 theme = ExtResource( 3 )
 text = ": Turn"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SoundMenuAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../SoundMenu")
 anims/HideSoundMenu = SubResource( 22 )
 anims/RESET = SubResource( 20 )
