@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Menu/TitleScreen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Menus/score.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://tilemap.png" type="Texture" id=8]
 [ext_resource path="res://MarvinVisionsSmall-Medium.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://Art/Menus/best.png" type="Texture" id=10]
+[ext_resource path="res://Art/Menus/Menu_BG-Game_Over-Video.webm" type="VideoStream" id=11]
 
 [sub_resource type="InputEventAction" id=5]
 action = "reload"
@@ -57,6 +58,8 @@ font_data = ExtResource( 9 )
 
 [node name="GameOverScreen" instance=ExtResource( 1 )]
 rect_pivot_offset = Vector2( -544, 35 )
+video_duration = 33.0
+videos = [ ExtResource( 11 ) ]
 
 [node name="Logo" parent="." index="4"]
 visible = false
