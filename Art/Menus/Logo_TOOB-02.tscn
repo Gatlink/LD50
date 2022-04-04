@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Menus/Logo_TOOB-02.material" type="Material" id=1]
+[ext_resource path="res://Art/Menus/Logo_TOOB-01.glb" type="PackedScene" id=2]
+
+[node name="Logo_TOOB-01" instance=ExtResource( 2 )]
+
+[node name="Title001" parent="." index="0"]
+material/0 = ExtResource( 1 )
