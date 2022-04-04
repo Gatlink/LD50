@@ -4,6 +4,7 @@
 
 [sub_resource type="CylinderShape" id=1]
 resource_local_to_scene = true
+radius = 3.0
 height = 1.0
 
 [node name="ScoreGate" type="Area"]

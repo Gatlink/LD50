@@ -21,6 +21,9 @@ export (float) var max_tilt := 30.0
 export (float) var max_yaw := 10.0
 export (float) var tilt_duration := 0.2
 
+export (int) var gate_points := 5
+export (int) var bonus_points := 10
+
 
 onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var graph : Spatial = $Graph
@@ -122,11 +125,13 @@ func update_animation(delta : float) -> void:
 
 func _on_HitBox_area_entered(area: Area) -> void:
 	var score_gate := area as ScoreGate
+	var score_mult := 2 if t_speed >= 1 else 1
 	if score_gate != null:
 		if score_gate.type == "Gate":
-			distance_score += score_gate.value
+			distance_score += gate_points * score_mult
 		else:
-			bonus_score += score_gate.value
+			bonus_score += bonus_points * score_mult
+			score_gate.collect()
 		return
 	
 	emit_signal("crashed")

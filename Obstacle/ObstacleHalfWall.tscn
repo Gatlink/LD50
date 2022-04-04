@@ -29,6 +29,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, -50 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, 47.8423 )
 material_override = SubResource( 2 )
 
+[node name="BonusPos" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="BonusPos"]
+transform = Transform( 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, -14.4889, -3.88229, 0 )
+
+[node name="Position3D2" type="Position3D" parent="BonusPos"]
+transform = Transform( 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0, 1, 14.489, -3.882, 0 )
+
+[node name="Position3D3" type="Position3D" parent="BonusPos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0 )
+
 [node name="Area" type="Area" parent="."]
 collision_mask = 0
 input_ray_pickable = false

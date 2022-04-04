@@ -48,3 +48,14 @@ func _on_Ship_crashed() -> void:
 	tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1, Tween.TRANS_CUBIC, Tween.EASE_IN)
 # warning-ignore:return_value_discarded
 	tween.start()
+
+
+func _on_Timer_timeout() -> void:
+	var chunk : Chunk = chunks[chunks.size() - 1]
+	var count := chunk.obstacle_holder.get_child_count()
+	for i in count:
+		var index : int = count - 1 - i
+		var obstacle := chunk.obstacle_holder.get_child(index) as Obstacle
+		if obstacle != null:
+			obstacle.spawn_bonus()
+			break
