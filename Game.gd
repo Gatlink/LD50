@@ -44,5 +44,7 @@ func init_chunk(chunk : Chunk) -> void:
 
 
 func _on_Ship_crashed() -> void:
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1, Tween.TRANS_CUBIC, Tween.EASE_IN)
+# warning-ignore:return_value_discarded
 	tween.start()

@@ -6,6 +6,7 @@ export (float) var video_duration : float = 10.0
 export (Array, Resource) var videos : Array
 
 
+onready var music := preload("res://SFX/vacation-collective-fe77a-main-version-02-52-3714.mp3")
 onready var focus_icon : Texture = preload("res://Art/Menus/selector.png")
 onready var video_player : VideoPlayer = $VideoPlayer
 onready var fader : ColorRect = $Fader
@@ -48,6 +49,12 @@ func hide_input(inputs : Array) -> void:
 func _ready() -> void:
 	transparent = hide_color
 	transparent.a = 0
+	
+	var stream := AudioStreamPlayer.new()
+	stream.stream = music
+	stream.bus = "Music"
+	add_child(stream)
+	stream.play()
 
 
 func _process(_delta: float) -> void:
