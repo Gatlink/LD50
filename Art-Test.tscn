@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=1]
 [ext_resource path="res://Art/Pipes/LD50-Pipe-01.glb" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Art/Menus/Logo_TOOB-01.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Art/Menus/Logo_TOOB-02.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Art/Bonus/LD50-Bonus-Star.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Art/Pipes/Pipe-Blocker.tscn" type="PackedScene" id=10]
 
 [node name="Spatial" type="Spatial"]
 
@@ -36,9 +37,11 @@ visible = false
 
 [node name="LD50-Obstacle-Tower-Four-01" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.464 )
+visible = false
 
 [node name="LD50-Obstacle-Wall-Half-01" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8791 )
+visible = false
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 1.83084e-09, -8.74036e-08, 0, 0.999781, 0.0209424, 8.74228e-08, 0.0209424, -0.999781, 0, 4.93305, 1.20464 )
@@ -47,9 +50,16 @@ far = 500.0
 
 [node name="Logo_TOOB-01" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.782055, 9.76735, 22.0585 )
+visible = false
 
 [node name="Logo_TOOB-02" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.782055, 4.89933, 22.0585 )
+visible = false
 
 [node name="LD50-Bonus-Star" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9032, 19.7299 )
+visible = false
+
+[node name="Pipe-Blocker" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.1209 )
+visible = false
