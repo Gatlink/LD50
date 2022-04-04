@@ -86,7 +86,7 @@ blend_point_1/node = SubResource( 15 )
 blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeBlendTree" id=17]
-graph_offset = Vector2( -614, 51.75 )
+graph_offset = Vector2( -217, 79 )
 nodes/Acceleration/node = SubResource( 18 )
 nodes/Acceleration/position = Vector2( 80, 260 )
 nodes/Add2/node = SubResource( 22 )
@@ -108,34 +108,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0 )
 
 [node name="Brake_Handle-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-L-01" index="0"]
-transform = Transform( 0.580949, 0.81394, -2.98023e-08, 2.98023e-08, 5.96046e-08, 1, 0.81394, -0.580949, 0, -1.01631e-08, 0.0355565, -5.25677e-09 )
+transform = Transform( 0.986997, 0.160736, -7.45058e-08, 9.68575e-08, -1.19209e-07, 1, 0.160736, -0.986997, -2.38419e-07, -1.01631e-08, 0.0355565, -5.25677e-09 )
 
 [node name="Brake_Handle-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Brake_Handle-R-01" index="0"]
-transform = Transform( 0.709482, 0.704723, -8.9407e-08, -8.9407e-08, 0, -1, -0.704723, 0.709482, 0, 1.98766e-09, 0.0347652, -1.48345e-09 )
+transform = Transform( -0.000702143, 1, -8.9407e-08, -1.49012e-07, 0, -1, -1, -0.000702172, 1.78814e-07, 1.98766e-09, 0.0347652, -1.48345e-09 )
 
 [node name="Engine-WIng-L-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="0"]
-transform = Transform( 0.93435, -0.101223, 0.344265, 7.07805e-08, 1.06247, 0.258276, -0.356356, -0.265401, 0.902649, 0.0222666, 0.0769282, 0.0542539 )
+transform = Transform( 0.93435, 0.127707, 0.332687, 8.19564e-08, 0.93358, -0.358368, -0.356356, 0.334841, 0.872291, 0.0222666, 0.0769282, 0.0542539 )
 
 [node name="Engine-WIng-L-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="1"]
-transform = Transform( 0.89898, -0.26659, -0.364797, 0.263279, 1.06095, 0.0077851, 0.350028, -0.113324, 0.931055, 0.0543271, 0.0769283, 0.023064 )
+transform = Transform( 0.869956, 0.331812, -0.364797, -0.353508, 0.935399, 0.0077851, 0.343814, 0.122186, 0.931055, 0.0543271, 0.0769283, 0.023064 )
 
 [node name="Engine-WIng-L-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="2"]
-transform = Transform( 0.890538, -0.26184, 0.387631, 0.258277, 1.06247, -1.11759e-07, -0.374479, 0.110106, 0.921815, 0.0548261, 0.0769283, -0.022598 )
+transform = Transform( 0.860588, 0.330349, 0.387631, -0.358368, 0.93358, -1.3411e-07, -0.361885, -0.138914, 0.921815, 0.0548261, 0.0769283, -0.022598 )
 
 [node name="Engine-WIng-L-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="3"]
-transform = Transform( 0.924238, -0.108455, -0.368862, -5.96046e-08, 1.06247, -0.258277, 0.381817, 0.262529, 0.89288, 0.0222666, 0.0769283, -0.0547112 )
+transform = Transform( 0.924238, 0.136831, -0.356457, -8.19564e-08, 0.93358, 0.358368, 0.381817, -0.331217, 0.862851, 0.0222666, 0.0769283, -0.0547112 )
 
 [node name="Engine-WIng-R-01" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="4"]
-transform = Transform( 0.916952, 0.113335, -0.385461, -9.68575e-08, 1.06247, 0.258276, 0.398998, -0.260459, 0.88584, -0.0222133, 0.0769282, 0.0542539 )
+transform = Transform( 0.916952, -0.142988, -0.372497, -9.68575e-08, 0.93358, -0.358368, 0.398999, 0.328606, 0.856048, -0.0222133, 0.0769282, 0.0542539 )
 
 [node name="Engine-WIng-R-04" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="5"]
-transform = Transform( 0.934026, 0.101464, 0.345085, 8.19564e-08, 1.06247, -0.258277, -0.357205, 0.265309, 0.902336, -0.0222133, 0.0769283, -0.0547112 )
+transform = Transform( 0.934026, -0.128011, 0.333479, 8.19564e-08, 0.93358, 0.358368, -0.357204, -0.334725, 0.871989, -0.0222133, 0.0769283, -0.0547112 )
 
 [node name="Engine-WIng-R-02" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="6"]
-transform = Transform( 0.901066, 0.256195, 0.365807, -0.253252, 1.0639, 0.00778511, -0.352057, -0.1096, 0.930658, -0.0543635, 0.0769283, 0.023064 )
+transform = Transform( 0.866094, -0.340686, 0.365807, 0.363197, 0.93168, 0.0077851, -0.343467, 0.126117, 0.930658, -0.0543635, 0.0769283, 0.023064 )
 
 [node name="Engine-WIng-R-03" parent="Graph/LD50-Ship-01/Armature/Body/Engine" index="7"]
-transform = Transform( 0.902577, 0.26538, -0.35655, -0.258277, 1.06247, -1.19209e-07, 0.344453, 0.101278, 0.934276, -0.0538645, 0.0769283, -0.022598 )
+transform = Transform( 0.872222, -0.334815, -0.35655, 0.358368, 0.93358, -1.2666e-07, 0.332868, -0.127776, 0.934276, -0.0538645, 0.0769283, -0.022598 )
 
 [node name="Rays" type="Spatial" parent="."]
 
@@ -176,9 +176,9 @@ draw_pass_1 = SubResource( 12 )
 tree_root = SubResource( 17 )
 anim_player = NodePath("../Graph/LD50-Ship-01/AnimationPlayer")
 active = true
-parameters/Acceleration/blend_position = 0.997855
+parameters/Acceleration/blend_position = -1.28311
 parameters/Add2/add_amount = 0.5
-parameters/Tilt/blend_position = 0.603217
+parameters/Tilt/blend_position = -0.000536203
 
 [node name="TopText" parent="." instance=ExtResource( 3 )]
 

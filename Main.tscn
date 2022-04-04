@@ -7,7 +7,7 @@
 [ext_resource path="res://Level/ChunkTurnRight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Level/IntroChunk.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Art/Env-Cartoon-01.tres" type="Environment" id=8]
-[ext_resource path="res://FollowShip.gd" type="Script" id=9]
+[ext_resource path="res://Ship/FollowShip.gd" type="Script" id=9]
 
 [sub_resource type="Curve3D" id=1]
 _data = {

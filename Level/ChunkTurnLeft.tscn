@@ -28,7 +28,7 @@ sides = 20
 material = SubResource( 1 )
 
 [node name="EndPosition" type="Position3D" parent="."]
-transform = Transform( 0.664709, 0, 0.747102, 0, 1, 0, -0.747102, 0, 0.664709, -21.0424, 0, -115.38 )
+transform = Transform( 0.664709, 0, 0.747102, 0, 1, 0, -0.747102, 0, 0.664709, -21.0011, 0, -115.343 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79318, 0, -14.0896 )

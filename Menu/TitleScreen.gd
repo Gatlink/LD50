@@ -90,6 +90,7 @@ func _on_QuitButton_pressed() -> void:
 
 
 func _on_Timer_timeout() -> void:
+# warning-ignore:return_value_discarded
 	tween.stop_all()
 	if is_hidden:
 		fade_in()
