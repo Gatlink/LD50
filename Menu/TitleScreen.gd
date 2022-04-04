@@ -59,14 +59,14 @@ func play_video() ->  void:
 	if videos.size() > 0:
 		video_player.stream = videos[video_index]
 		video_player.play()
-		fade_timer.start(1)
+		_on_Timer_timeout()
 		video_index = (video_index + 1) % videos.size()
 
 
 func fade_in() -> void:
 	is_hidden = false
 # warning-ignore:return_value_discarded
-	tween.interpolate_property(fader, "color", hide_color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_IN)
+	tween.interpolate_property(fader, "color", fader.color, transparent, fade_time, Tween.TRANS_QUART, Tween.EASE_IN)
 # warning-ignore:return_value_discarded
 	tween.start()
 
@@ -74,7 +74,7 @@ func fade_in() -> void:
 func fade_out() -> void:
 	is_hidden = true
 # warning-ignore:return_value_discarded
-	tween.interpolate_property(fader, "color", transparent, hide_color, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
+	tween.interpolate_property(fader, "color", fader.color, hide_color, fade_time, Tween.TRANS_QUART, Tween.EASE_OUT)
 # warning-ignore:return_value_discarded
 	tween.start()
 
@@ -90,6 +90,7 @@ func _on_QuitButton_pressed() -> void:
 
 
 func _on_Timer_timeout() -> void:
+	tween.stop_all()
 	if is_hidden:
 		fade_in()
 		fade_timer.start(video_duration - fade_time)

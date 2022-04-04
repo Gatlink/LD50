@@ -13,7 +13,7 @@ export (float) var steering_time := 0.5
 export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
 
-export (float) var normal_smooth := 0.1
+export (float) var normal_smooth := 0.2
 export (float) var max_tilt := 30.0
 export (float) var max_yaw := 10.0
 export (float) var tilt_duration := 0.2
