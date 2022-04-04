@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Art/Ship/LD50-Ship-01.glb" type="PackedScene" id=2]
+[ext_resource path="res://HUD/TopText.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0 ), 0.0, 5.49399e-07, 0, 0, Vector2( 0.5, 0.5 ), 2.03636, 2.03636, 0, 0, Vector2( 1, 1 ), 0.19867, 0.0, 0, 0 ]
@@ -179,6 +180,9 @@ parameters/Acceleration/blend_position = 0.997855
 parameters/Add2/add_amount = 0.5
 parameters/Tilt/blend_position = 0.603217
 
+[node name="TopText" parent="." instance=ExtResource( 3 )]
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="done" from="TopText" to="." method="_on_TopText_done"]
 
 [editable path="Graph/LD50-Ship-01"]

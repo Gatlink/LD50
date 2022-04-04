@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Ship",
 "language": "GDScript",
 "path": "res://Ship/Ship.gd"
+}, {
+"base": "Control",
+"class": "TopText",
+"language": "GDScript",
+"path": "res://HUD/TopText.gd"
 } ]
 _global_script_class_icons={
 "Chunk": "",
-"Ship": ""
+"Ship": "",
+"TopText": ""
 }
 
 [application]

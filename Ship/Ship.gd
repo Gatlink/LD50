@@ -22,6 +22,7 @@ export (float) var tilt_duration := 0.2
 onready var ground_ray : RayCast = $Rays/GroundRayMid
 onready var graph : Spatial = $Graph
 onready var animation_tree : AnimationTree = $AnimationTree
+onready var top_text : TopText = $TopText
 onready var ground_position := global_transform.origin
 onready var ground_normal := global_transform.basis.y
 onready var average_speed := min_speed + (max_speed - min_speed) * 0.5
@@ -33,14 +34,21 @@ var t_speed : float = 0.5
 var steer : float
 var t_steer : float
 
-var is_dead := false
+var is_moving := false
 
 var tilt : float
 var t_tilt : float
 
+var countdown : int
+
+
+func _ready() -> void:
+	countdown = 3
+	top_text.display(str(countdown))
+
 
 func _process(delta: float) -> void:
-	if is_dead:
+	if not is_moving:
 		return
 	
 	# SPEED
@@ -98,7 +106,7 @@ func update_animation(delta : float) -> void:
 
 
 func _on_HitBox_area_entered(_area: Area) -> void:
-	is_dead = true
+	is_moving = false
 	$Graph.visible = false
 	var particles : Particles = $Particles
 	particles.emitting = true
@@ -107,3 +115,12 @@ func _on_HitBox_area_entered(_area: Area) -> void:
 	
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Menu/GameOverScreen.tscn")
+
+
+func _on_TopText_done() -> void:
+	if countdown <= 0:
+		is_moving = true
+		return
+	
+	countdown -= 1
+	top_text.call_deferred("display", str(countdown) if countdown > 0 else "Go!")

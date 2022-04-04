@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/Menus/Menu_BG-Video-02.webm" type="VideoStream" id=4]
 [ext_resource path="res://tilemap.png" type="Texture" id=5]
 [ext_resource path="res://MarvinVisionsBig-Bold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Art/Menus/Menu_BG-Video-03.webm" type="VideoStream" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )
@@ -80,7 +81,8 @@ font_data = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-videos = [ ExtResource( 4 ), ExtResource( 1 ) ]
+fade_time = 1.5
+videos = [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 7 ) ]
 
 [node name="Tween" type="Tween" parent="."]
 
