@@ -46,8 +46,8 @@ _global_script_class_icons={
 
 config/name="TOOB"
 run/main_scene="res://Menu/TitleScreen.tscn"
-config/icon="res://icon.png"
-config/windows_native_icon="res://Art/Windows-Icon.ico"
+config/icon="res://Art/Menus/Windows-Icon.png"
+config/windows_native_icon="res://Art/Menus/Windows-Icon.ico"
 
 [display]
 
