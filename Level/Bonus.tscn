@@ -7,7 +7,7 @@
 
 [sub_resource type="CylinderShape" id=3]
 resource_local_to_scene = true
-radius = 3.0
+radius = 4.0
 height = 1.0
 
 [sub_resource type="Curve" id=7]

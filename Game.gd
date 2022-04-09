@@ -2,15 +2,20 @@ extends Spatial
 
 
 export (Array, PackedScene) var chunk_scenes : Array
+export (int) var chunks_count_before_bonus := 3
 
 
 onready var chunks_parent := $Chunks
 onready var music : AudioStreamPlayer = $Music
 onready var tween : Tween = $Tween
 onready var blocker : Spatial = $Blocker
+onready var last_bonus_spawned := 0
+onready var bonuses := $BonusPool.get_children()
 
 
+var should_spawn_chunk := false
 var chunks : Array
+var current_bonus := 0
 
 
 func _ready() -> void:
@@ -21,10 +26,17 @@ func _ready() -> void:
 		init_chunk(chunk)
 
 
-func on_chunk_screen_exited(chunk : Chunk) -> void:
-	if chunks[0] != chunk:
-		return
+func _process(_delta: float) -> void:
+	if last_bonus_spawned >= chunks_count_before_bonus:
+		spawn_bonus(chunks[chunks.size() - 1])
+		last_bonus_spawned = 0
 	
+	if should_spawn_chunk:
+		spawn_chunk()
+
+
+func spawn_chunk() -> void:
+	var chunk : Spatial = chunks[0]
 	chunks.remove(0)
 	chunk.queue_free()
 	
@@ -36,7 +48,28 @@ func on_chunk_screen_exited(chunk : Chunk) -> void:
 	new_chunk.global_transform.basis = end_pos.global_transform.basis
 	init_chunk(new_chunk)
 	
+	last_bonus_spawned += 1
+	should_spawn_chunk = false
+	
 	blocker.global_transform = chunks[0].global_transform
+
+
+func on_chunk_screen_exited(chunk : Chunk) -> void:
+	should_spawn_chunk = chunks[0] == chunk
+
+
+func spawn_bonus(chunk : Chunk) -> void:
+	var count := chunk.obstacles.size()
+	for i in count:
+		var index : int = count - 1 - i
+		var obstacle := chunk.obstacles[index] as Obstacle
+		var pos := obstacle.get_bonus_spawn_position()
+		if pos != null:
+			var bonus : Spatial = bonuses[current_bonus]
+			current_bonus = (current_bonus + 1) % bonuses.size()
+			bonus.global_transform = pos.global_transform
+			bonus.visible = true
+			break
 
 
 func init_chunk(chunk : Chunk) -> void:
@@ -50,14 +83,3 @@ func _on_Ship_crashed() -> void:
 	tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1, Tween.TRANS_CUBIC, Tween.EASE_IN)
 # warning-ignore:return_value_discarded
 	tween.start()
-
-
-func _on_Timer_timeout() -> void:
-	var chunk : Chunk = chunks[chunks.size() - 1]
-	var count := chunk.obstacle_holder.get_child_count()
-	for i in count:
-		var index : int = count - 1 - i
-		var obstacle := chunk.obstacle_holder.get_child(index) as Obstacle
-		if obstacle != null:
-			obstacle.spawn_bonus()
-			break
