@@ -19,7 +19,7 @@ obstacle_scenes = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtRes
 [node name="Obstacles" type="Spatial" parent="."]
 
 [node name="ObstaclePosition" type="CSGCylinder" parent="Obstacles"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, -46.1449 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, -50 )
 radius = 17.5
 height = 0.1
 sides = 20
