@@ -147,4 +147,10 @@ size_flags_horizontal = 5
 texture = ExtResource( 12 )
 stretch_mode = 6
 
+[node name="ChunkTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
 [connection signal="crashed" from="Ship" to="." method="_on_Ship_crashed"]
+[connection signal="crossed_gate" from="Ship" to="." method="_on_Ship_crossed_gate"]
+[connection signal="timeout" from="ChunkTimer" to="." method="_on_ChunkTimer_timeout"]

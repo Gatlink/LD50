@@ -37,7 +37,6 @@ material = SubResource( 4 )
 
 [node name="Bonus" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
-type = "Bonus"
 
 [node name="CollisionShape" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.08483, 0 )

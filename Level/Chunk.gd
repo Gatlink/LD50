@@ -2,9 +2,6 @@ class_name Chunk
 extends Spatial
 
 
-signal screen_exited(chunk)
-
-
 export (Array, PackedScene) var obstacle_scenes : Array
 
 
@@ -25,7 +22,4 @@ func _ready() -> void:
 		obstacle_holder.add_child(instance)
 		obstacle_pos.queue_free()
 		obstacles.append(instance)
-
-
-func _on_VisibilityNotifier_screen_exited() -> void:
-	emit_signal("screen_exited", self)
+		obstacles.append(instance)

@@ -11,6 +11,7 @@ onready var tween : Tween = $Tween
 onready var blocker : Spatial = $Blocker
 onready var last_bonus_spawned := 0
 onready var bonuses := $BonusPool.get_children()
+onready var chunk_timer : Timer = $ChunkTimer
 
 
 var should_spawn_chunk := false
@@ -54,10 +55,6 @@ func spawn_chunk() -> void:
 	blocker.global_transform = chunks[0].global_transform
 
 
-func on_chunk_screen_exited(chunk : Chunk) -> void:
-	should_spawn_chunk = chunks[0] == chunk
-
-
 func spawn_bonus(chunk : Chunk) -> void:
 	var count := chunk.obstacles.size()
 	for i in count:
@@ -74,8 +71,6 @@ func spawn_bonus(chunk : Chunk) -> void:
 
 func init_chunk(chunk : Chunk) -> void:
 	chunks.append(chunk)
-# warning-ignore:return_value_discarded
-	chunk.connect("screen_exited", self, "on_chunk_screen_exited")
 
 
 func _on_Ship_crashed() -> void:
@@ -83,3 +78,11 @@ func _on_Ship_crashed() -> void:
 	tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1, Tween.TRANS_CUBIC, Tween.EASE_IN)
 # warning-ignore:return_value_discarded
 	tween.start()
+
+
+func _on_Ship_crossed_gate() -> void:
+	chunk_timer.start()
+
+
+func _on_ChunkTimer_timeout() -> void:
+	should_spawn_chunk = true

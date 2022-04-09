@@ -3,6 +3,7 @@ extends Spatial
 
 
 signal crashed
+signal crossed_gate()
 
 
 export (float) var min_speed := 35.0
@@ -21,8 +22,8 @@ export (float) var max_tilt := 30.0
 export (float) var max_yaw := 10.0
 export (float) var tilt_duration := 0.2
 
-export (int) var gate_points := 5
-export (int) var bonus_points := 10
+export (int) var gate_points := 10
+export (int) var bonus_points := 15
 
 
 onready var ground_ray : RayCast = $Rays/GroundRayMid
@@ -52,9 +53,10 @@ var tilt : float
 var t_tilt : float
 
 var countdown : int
-var distance_score : int
+var speed_score : int
 var bonus_score : int
 var elapsed_time : float
+var chunk_elapsed_time : float
 
 
 func _ready() -> void:
@@ -69,6 +71,7 @@ func _process(delta: float) -> void:
 		return
 	
 	elapsed_time += delta
+	chunk_elapsed_time += delta
 	
 	# SPEED
 	var acceleration_target := Input.get_axis("brake", "accelerate")
@@ -94,7 +97,7 @@ func _process(delta: float) -> void:
 		var angle := transform.basis.y.angle_to(ground_normal)
 		rotate(rotation_axis.normalized(), angle)
 	
-	rotate(transform.basis.y, steer)
+	rotate(transform.basis.y.normalized(), steer)
 	
 	var velocity := global_transform.basis.z * speed * delta
 	global_transform.origin = ground_position + velocity
@@ -126,20 +129,25 @@ func update_animation(delta : float) -> void:
 
 
 func _on_HitBox_area_entered(area: Area) -> void:
-	var score_gate := area as ScoreGate
-	var score_mult := 2 if t_speed >= 1 else 1
-	if score_gate != null:
-		if score_gate.type == "Gate":
-			distance_score += gate_points * score_mult
-		else:
-			bonus_score += bonus_points * score_mult
-			score_gate.collect()
-			if score_mult > 1:
-				sfx_bonus_full.play()
-			else:
-				sfx_bonus.play()
-		return
-	
+	if area is Bonus:
+		var bonus := area as Bonus
+		bonus_score += bonus_points
+		bonus.collect()
+		sfx_bonus_full.play()
+	elif area is ScoreGate:
+		var gate := area as ScoreGate
+		if gate.time_max_score > 0:
+			var time_over_max := max(0.0, chunk_elapsed_time - gate.time_max_score)
+			var score := int(max(0, 1 - time_over_max) * gate_points)
+			speed_score += score
+#			print(gate.chunk.name, " ", chunk_elapsed_time, " ", score)
+		chunk_elapsed_time = 0
+		emit_signal("crossed_gate")
+	else:
+		crash()
+
+
+func crash() -> void:
 	emit_signal("crashed")
 	is_moving = false
 	sfx_engine.playing = false
@@ -158,14 +166,13 @@ func _on_HitBox_area_entered(area: Area) -> void:
 # warning-ignore:return_value_discarded
 	save.open("user://user.save", File.READ_WRITE)
 	save.seek_end()
-	save.store_line("%02d:%02d.%02d|%d|%d|%d|%d" % [
+	save.store_line("%02d:%02d.%02d|%d|%d|%d" % [
 # warning-ignore:integer_division
 		seconds / 60,
 		seconds % 60,
 		(elapsed_time - seconds) * 100,
 # warning-ignore:integer_division
-		int(elapsed_time) / 5,
-		distance_score,
+		speed_score,
 		bonus_score,
 		get_total_score()
 	])
@@ -179,7 +186,7 @@ func _on_HitBox_area_entered(area: Area) -> void:
 
 func get_total_score() -> int:
 # warning-ignore:integer_division
-	return distance_score + bonus_score + int(elapsed_time) / 5
+	return speed_score + bonus_score
 
 
 func _on_TopText_done() -> void:

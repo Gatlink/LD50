@@ -31,9 +31,6 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 [node name="EndPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100 )
 
-[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-aabb = AABB( -17.5, -2, -102, 35, 35, 104 )
-
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.464398, 30.9796, -85.5901 )
 spot_range = 838.965
@@ -63,6 +60,5 @@ spot_angle = 20.98
 spot_angle_attenuation = 1060.11
 
 [node name="ScoreGate" parent="." instance=ExtResource( 7 )]
-transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 5, 0, 15, -2.5 )
-
-[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -100 )
+time_max_score = 1.8

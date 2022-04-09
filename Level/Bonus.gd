@@ -1,4 +1,5 @@
-extends ScoreGate
+class_name Bonus
+extends Area
 
 
 onready var model := $"LD50-Bonus-Star"
