@@ -140,7 +140,7 @@ func _on_HitBox_area_entered(area: Area) -> void:
 			var time_over_max := max(0.0, chunk_elapsed_time - gate.time_max_score)
 			var score := int(max(0, 1 - time_over_max) * gate_points)
 			speed_score += score
-#			print(gate.chunk.name, " ", chunk_elapsed_time, " ", score)
+#			print(chunk_elapsed_time, " ", score)
 		chunk_elapsed_time = 0
 		emit_signal("crossed_gate")
 	else:

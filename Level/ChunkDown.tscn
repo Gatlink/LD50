@@ -3,7 +3,7 @@
 [ext_resource path="res://Level/Pipes/LD50-Pipe-D-01.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/BaseChunk.tscn" type="PackedScene" id=2]
 
-[node name="Chunk" instance=ExtResource( 2 )]
+[node name="ChunkDown" instance=ExtResource( 2 )]
 exit_axis = "x"
 exit_angle = -30.0
 
@@ -12,3 +12,6 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 
 [node name="ObstaclePosition" parent="Obstacles" index="0"]
 transform = Transform( 1, 0, 0, 0, 0.0233678, -0.999727, 0, 0.999727, 0.0233678, 0, 22.4917, -48.6622 )
+
+[node name="ScoreGate" parent="." index="2"]
+time_max_score = 1.1

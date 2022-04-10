@@ -39,6 +39,7 @@ func _process(_delta: float) -> void:
 func spawn_chunk() -> void:
 	var chunk : Spatial = chunks[0]
 	chunks.remove(0)
+#	print(chunk.name)
 	chunk.queue_free()
 	
 	var end_transform : Transform = chunks[chunks.size() - 1].get_next_transform()

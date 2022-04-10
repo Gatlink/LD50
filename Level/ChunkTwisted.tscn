@@ -7,7 +7,7 @@
 params_blend_mode = 1
 albedo_color = Color( 1, 0, 0, 0.27451 )
 
-[node name="Chunk" instance=ExtResource( 1 )]
+[node name="ChunkTwisted" instance=ExtResource( 1 )]
 exit_axis = "z"
 exit_angle = 180.0
 
