@@ -32,10 +32,10 @@ material_override = SubResource( 2 )
 [node name="BonusPos" type="Spatial" parent="."]
 
 [node name="Position3D" type="Position3D" parent="BonusPos"]
-transform = Transform( 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, -14.4889, -3.88229, 0 )
+transform = Transform( 0.5, 0.866026, 0, -0.866026, 0.5, 0, 0, 0, 1, -12.9904, -7.50001, 0 )
 
 [node name="Position3D2" type="Position3D" parent="BonusPos"]
-transform = Transform( 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0, 1, 14.489, -3.882, 0 )
+transform = Transform( 0.5, -0.866026, 0, 0.866026, 0.5, 0, 0, 0, 1, 12.9906, -7.49975, 0 )
 
 [node name="Position3D3" type="Position3D" parent="BonusPos"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0 )
