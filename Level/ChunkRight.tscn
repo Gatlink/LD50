@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Level/Pipes/LD50-Pipe-R-01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level/BaseChunk.tscn" type="PackedScene" id=2]
+
+[node name="Chunk" instance=ExtResource( 2 )]
+exit_angle = -30.0
+
+[node name="Pipe" parent="." index="0" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="ObstaclePosition" parent="Obstacles" index="0"]
+transform = Transform( 0.886252, -0.463203, 2.02473e-08, 0, -4.37114e-08, -1, 0.463203, 0.886252, -3.87393e-08, 10.5084, 15, -101.538 )

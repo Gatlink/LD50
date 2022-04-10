@@ -41,12 +41,11 @@ func spawn_chunk() -> void:
 	chunks.remove(0)
 	chunk.queue_free()
 	
-	var end_pos : Spatial = chunks[chunks.size() - 1].end_position
+	var end_transform : Transform = chunks[chunks.size() - 1].get_next_transform()
 	var index := randi() % chunk_scenes.size()
 	var new_chunk : Chunk = chunk_scenes[index].instance()
 	chunks_parent.add_child(new_chunk)
-	new_chunk.global_transform.origin = end_pos.global_transform.origin
-	new_chunk.global_transform.basis = end_pos.global_transform.basis
+	new_chunk.global_transform = end_transform
 	init_chunk(new_chunk)
 	
 	last_bonus_spawned += 1

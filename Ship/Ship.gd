@@ -12,7 +12,7 @@ export (float) var acceleration_time := 2.0
 export (float) var deceleration_time := 1.0
 export (Curve) var acceleration : Curve
 
-export (float) var max_angle := 2.0
+export (float) var max_angle := 90.0
 export (float) var steering_time := 0.5
 export (float) var steer_back_time := 0.1
 export (Curve) var steering : Curve
@@ -97,7 +97,7 @@ func _process(delta: float) -> void:
 		var angle := transform.basis.y.angle_to(ground_normal)
 		rotate(rotation_axis.normalized(), angle)
 	
-	rotate(transform.basis.y.normalized(), steer)
+	rotate(transform.basis.y.normalized(), steer * delta)
 	
 	var velocity := global_transform.basis.z * speed * delta
 	global_transform.origin = ground_position + velocity

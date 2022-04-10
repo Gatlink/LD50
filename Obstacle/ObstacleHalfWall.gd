@@ -9,8 +9,6 @@ onready var ad : MeshInstance = $"Graph/LD50-Obstacle-Wall-Half-01/Obstacle-Wall
 
 
 func _ready() -> void:
-	randomize()
-	
 	if ads.size() > 0 and randf() < ad_probability:
 		ad.material_override.albedo_texture = ads[randi() % ads.size()]
 	else:

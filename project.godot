@@ -55,6 +55,10 @@ run/main_scene="res://Menu/TitleScreen.tscn"
 config/icon="res://Art/Menus/Windows-Icon.png"
 config/windows_native_icon="res://Art/Menus/Windows-Icon.ico"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/borderless=true

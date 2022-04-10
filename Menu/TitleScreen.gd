@@ -11,7 +11,7 @@ onready var music_bus_id := AudioServer.get_bus_index(MUSIC_BUS_NAME)
 onready var effects_bus_id := AudioServer.get_bus_index(EFFECTS_BUS_NAME)
 
 onready var sound_animation : AnimationPlayer = $SoundMenuAnimation
-onready var back_button : Button = $SoundMenu/Tilte/Back
+onready var back_button : TextureButton = $SoundMenu/Tilte/Back
 onready var main_slider : HSlider = $SoundMenu/Main/HSlider
 onready var main_label : Label = $SoundMenu/Main/Label
 onready var music_slider : HSlider = $SoundMenu/Music/HSlider
@@ -37,10 +37,6 @@ func _ready() -> void:
 
 func highligh_label(label : Label, is_highlighted : bool) -> void:
 	label.add_color_override("font_color", Color("f0a422") if is_highlighted else Color.white)
-
-
-func _process(_delta: float) -> void:
-	back_button.icon = back_selected if back_button.is_hovered() or back_button.has_focus() else back_normal
 
 
 func _on_SoundButton_pressed() -> void:

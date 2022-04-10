@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Art/Menus/Menu_BG-Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://Menu/TitleScreen.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://SFX/countdown.wav" type="AudioStream" id=10]
 [ext_resource path="res://Art/Menus/Logo_TOOB-01.png" type="Texture" id=11]
 [ext_resource path="res://Menu/PlayOnStart.gd" type="Script" id=12]
+[ext_resource path="res://Art/Menus/backSelected.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=23]
 length = 0.001
@@ -621,11 +622,11 @@ text = "AUDIO"
 align = 2
 valign = 1
 
-[node name="Back" type="Button" parent="SoundMenu/Tilte"]
+[node name="Back" type="TextureButton" parent="SoundMenu/Tilte"]
 margin_left = 365.0
-margin_top = 1.0
+margin_top = 6.0
 margin_right = 429.0
-margin_bottom = 64.0
+margin_bottom = 59.0
 focus_neighbour_top = NodePath("../../Effects/HSlider")
 focus_neighbour_bottom = NodePath("../../Main/HSlider")
 focus_next = NodePath("../../Main/HSlider")
@@ -633,8 +634,11 @@ focus_previous = NodePath("../../Effects/HSlider")
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource( 3 )
-icon = ExtResource( 8 )
-flat = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 13 )
 
 [node name="Main" type="HBoxContainer" parent="SoundMenu"]
 margin_left = 149.0
