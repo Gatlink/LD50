@@ -142,6 +142,7 @@ func _on_HitBox_area_entered(area: Area) -> void:
 			speed_score += score
 #			print(chunk_elapsed_time, " ", score)
 		chunk_elapsed_time = 0
+		gate.queue_free()
 		emit_signal("crossed_gate")
 	else:
 		crash()

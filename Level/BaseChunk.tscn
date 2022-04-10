@@ -25,5 +25,5 @@ sides = 20
 material = SubResource( 1 )
 
 [node name="ScoreGate" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -2.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -10.5 )
 time_max_score = 1.8

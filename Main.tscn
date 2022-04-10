@@ -30,7 +30,7 @@ font_data = ExtResource( 10 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
-chunk_scenes = [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 3 ) ]
+chunk_scenes = [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 6 ) ]
 
 [node name="BonusPool" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 250 )
