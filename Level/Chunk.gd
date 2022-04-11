@@ -16,13 +16,14 @@ var obstacles := []
 
 func _ready() -> void:
 	for obstacle_pos in obstacle_holder.get_children():
+		if not obstacle_pos.visible:
+			continue
+		
 		var instance : Obstacle = obstacle_scenes[randi() % obstacle_scenes.size()].instance()
-		instance.translation = obstacle_pos.translation
-		instance.rotate(Vector3.BACK, randf() * deg2rad(360))
-		instance.rotate(Vector3.UP, obstacle_pos.rotation.y)
 		obstacle_holder.add_child(instance)
+		instance.global_transform = obstacle_pos.global_transform
+		instance.rotate(instance.global_transform.basis.z, randf() * 2 * PI)
 		obstacle_pos.queue_free()
-		obstacles.append(instance)
 		obstacles.append(instance)
 
 

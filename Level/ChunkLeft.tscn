@@ -10,7 +10,7 @@ exit_angle = 30.0
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="ObstaclePosition" parent="Obstacles" index="0"]
-transform = Transform( 0.88759, 0.460634, -2.01349e-08, 0, -4.37114e-08, -1, -0.460634, 0.88759, -3.87978e-08, -10.5363, 15, -101.404 )
+transform = Transform( 0.88759, 0, 0.460634, 0, 1, 0, -0.460633, 0, 0.88759, -10.5363, 15, -101.404 )
 
 [node name="ScoreGate" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 15, -10.5 )
