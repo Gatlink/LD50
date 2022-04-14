@@ -8,5 +8,5 @@
 [node name="Pipe" parent="." index="0" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="ObstaclePosition" parent="Obstacles" index="0"]
-visible = false
+[node name="ScoreGate" parent="." index="2"]
+time_max_score = 10.0

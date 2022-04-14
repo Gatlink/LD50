@@ -5,18 +5,19 @@
 [ext_resource path="res://Level/ObstaclePosition.tscn" type="PackedScene" id=3]
 
 [node name="ChunkTornado" instance=ExtResource( 2 )]
+weight = 2
 
 [node name="Pipe" parent="." index="0" instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="ObstaclePosition" parent="Obstacles" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -90.1056 )
+[node name="ObstaclePosition1" parent="Obstacles" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -90.106 )
 
 [node name="ObstaclePosition2" parent="Obstacles" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.957652, -0.0647699, 0.280549, 0, 0.97437, 0.224951, -0.287929, -0.215425, 0.933107, -197.48, 53.8825, -75.1052 )
+transform = Transform( 0.957652, -0.0647699, 0.280549, 0, 0.97437, 0.224951, -0.287929, -0.215425, 0.933107, -292.043, 73.978, -51.5185 )
 
 [node name="ObstaclePosition3" parent="Obstacles" index="2" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 0.937306, -0.348507, 0, 0.348507, 0.937306, 0, 149.325, -97.6161 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 114.99, -87.6383 )
 
-[node name="ObstaclePosition4" parent="Obstacles" index="3" instance=ExtResource( 3 )]
-transform = Transform( 0.99987, -2.32831e-10, 0.0161087, -0.00368637, 0.973463, 0.228814, -0.0156812, -0.228843, 0.973337, -200.417, 262.678, -99.8107 )
+[node name="ScoreGate" parent="." index="2"]
+time_max_score = 5.0

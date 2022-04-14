@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Ship/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://Level/ChunkRight.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Level/ChunkLeft.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Level/ChunkDown.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Level/ChunkLarge.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Level/ChunkLong.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Level/ChunkThin.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -31,7 +34,36 @@ font_data = ExtResource( 10 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
-chunk_scenes = [ ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 7 ), ExtResource( 3 ) ]
+
+[node name="ChunkPool" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 100 )
+
+[node name="ChunkDown" parent="ChunkPool" instance=ExtResource( 19 )]
+visible = false
+
+[node name="ChunkLarge" parent="ChunkPool" instance=ExtResource( 20 )]
+visible = false
+
+[node name="ChunkLeft" parent="ChunkPool" instance=ExtResource( 18 )]
+visible = false
+
+[node name="ChunkLong" parent="ChunkPool" instance=ExtResource( 21 )]
+visible = false
+
+[node name="ChunkRight" parent="ChunkPool" instance=ExtResource( 17 )]
+visible = false
+
+[node name="ChunkStraight" parent="ChunkPool" instance=ExtResource( 6 )]
+visible = false
+
+[node name="ChunkThin" parent="ChunkPool" instance=ExtResource( 23 )]
+visible = false
+
+[node name="ChunkTornado" parent="ChunkPool" instance=ExtResource( 7 )]
+visible = false
+
+[node name="ChunkUp" parent="ChunkPool" instance=ExtResource( 3 )]
+visible = false
 
 [node name="BonusPool" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 250 )
@@ -48,15 +80,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65 )
 
 [node name="Chunk" parent="Chunks" instance=ExtResource( 5 )]
+is_pooled = false
 
 [node name="Chunk2" parent="Chunks" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100 )
+is_pooled = false
 
 [node name="Chunk3" parent="Chunks" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200 )
+is_pooled = false
 
 [node name="Chunk4" parent="Chunks" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300 )
+is_pooled = false
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
 
